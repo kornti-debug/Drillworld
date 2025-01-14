@@ -1,0 +1,24 @@
+#gameContainer {
+    position: relative;
+    width: 1000px; /* change according to your game */
+    height: 500px; /* change according to your game */
+}
+
+#canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+#background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1000px; 
+    height: 500px;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+
+}
+/* add styles for other HTML elements of your game */
