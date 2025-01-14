@@ -9,7 +9,7 @@ global.playerObject = {};
 global.keys = {};
 global.backgroundShift = 0;
 global.backgroundMaxShift = -600;
-global.gravityForce = 9.8;
+global.gravityForce = 9.81;
 global.pixelToMeter = 100;
 global.leftMoveTrigger;
 global.rightMoveTrigger;

@@ -16,7 +16,11 @@ function move(event) {
         global.playerObject.xVelocity = -200;
     }
     if(global.keys['w']){
-        global.playerObject.yVelocity = -200;
+        if(!isFlying)
+            global.playerObject.yVelocity = -200;
+                //         setTimeout(() => {
+                //     global.playerObject.useGravityForces = false;
+                // }, 600);
     }
     if(global.keys['s']){
         global.playerObject.yVelocity = 200;
@@ -39,12 +43,12 @@ function move(event) {
     //         global.playerObject.yVelocity = 0;
     //         break;
     //     case "w":
-    //         if (!isFlying) {
-    //             isFlying = true;
+    //         // if (!isFlying) {
+    //         //     isFlying = true;
     //             global.playerObject.setJumpForce(.8);
-    //             setTimeout(() => {
-    //                 global.playerObject.useGravityForces = false;
-    //             }, 600);
+    //             // setTimeout(() => {
+    //             //     global.playerObject.useGravityForces = false;
+    //             // }, 600);
     //             break;
     //         }
     //    /* case "s":
