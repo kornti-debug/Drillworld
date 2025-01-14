@@ -5,7 +5,7 @@ import { global } from "../modules/global.js";
 class DrillTrigger extends BaseGameObject {
 
     name = "DrillTrigger";
-    blockGravityForces = true;
+    blockGravityForces = false;
     offset = {
         "left": 0,
         "top": 0
