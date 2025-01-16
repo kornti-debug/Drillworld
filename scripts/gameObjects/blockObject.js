@@ -5,6 +5,7 @@ import { global } from "../modules/global.js";
 class BlockObject extends BaseGameObject {
     name = "BlockObject";
     blockGravityForces = true;
+    health = 10;
 
     reactToCollision = function (collidingObject)   {
         // if (collidingObject.name == "Skeleton") {

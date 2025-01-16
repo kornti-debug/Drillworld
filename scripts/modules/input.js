@@ -5,25 +5,28 @@ let isFlying = false;
 function move(event) {
 
     global.keys[event.key] = true;
-    console.log(global.keys[event.key])
-    // if(global.keys)
-    console.log(global.keys['d'])
+    // console.log(global.keys[event.key])
+    // // if(global.keys)
+    // console.log(global.keys['d'])
 
     if(global.keys['d']){
-        global.playerObject.xVelocity = 200;
+        global.playerObject.xVelocity = 500;
     }
     if(global.keys['a']){
-        global.playerObject.xVelocity = -200;
+        global.playerObject.xVelocity = -500;
     }
     if(global.keys['w']){
-        if(!isFlying)
-            global.playerObject.yVelocity = -200;
-                //         setTimeout(() => {
+        // if(!isFlying)
+            // console.log(global.playerObject.yVelocity)
+            global.gravityForce = 0
+             global.playerObject.yVelocity -= global.playerObject.jetpackForce
+            // global.playerObject.yVelocity = -200;
+                //          setTimeout(() => {
                 //     global.playerObject.useGravityForces = false;
-                // }, 600);
+                //  }, 600);
     }
     if(global.keys['s']){
-        global.playerObject.yVelocity = 200;
+        global.playerObject.yVelocity = 500;
     }
 
    
@@ -71,6 +74,7 @@ function stop(event) {
     }
     if(!global.keys['w']){
         global.playerObject.yVelocity = -0;
+        global.gravityForce = 4;
     }
     if(!global.keys['s']){
         global.playerObject.yVelocity = 0;
@@ -113,3 +117,7 @@ document.addEventListener("keydown", move);
 
 //if you just want to move as long as the player presses a key:
 document.addEventListener("keyup", stop);
+
+// document.addEventListener("mousemove", (event) => {
+//     console.log(`x= ${event.clientX}, Y=${event.clientY}`)
+// })

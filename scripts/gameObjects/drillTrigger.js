@@ -15,13 +15,23 @@ class DrillTrigger extends BaseGameObject {
     reactToCollision = function (collidingObject)   {
         if (collidingObject.name == "BlockObject") {
             if(this.name == "leftDrillTrigger" && global.keys['a']){
+                collidingObject.health --
+                console.log(collidingObject.health)
+                if(collidingObject.health == 0) {
                 collidingObject.active = false;
+            }
             }
             if(this.name == "rightDrillTrigger" && global.keys['d']){
+                collidingObject.health --
+                if(collidingObject.health == 0) {
                 collidingObject.active = false;
             }
+            }
             if(this.name == "bottomDrillTrigger" && global.keys['s']){
+                collidingObject.health --
+                if(collidingObject.health == 0) {
                 collidingObject.active = false;
+            }
             }
             // if(this.name == "leftDrillTrigger" && global.keys['a']){
             //     collidingObject.active = false;

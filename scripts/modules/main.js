@@ -4,6 +4,7 @@ import { MoveTrigger } from "../gameObjects/moveTrigger.js";
 import { BlockObject } from "../gameObjects/blockObject.js";
 import { Floor } from "../gameObjects/floor.js";
 import { DrillTrigger } from "../gameObjects/drillTrigger.js";
+import { VerticalMoveTrigger } from "../gameObjects/verticalMoveTrigger.js";
 
 function gameLoop(totalRunningTime) { 
     global.deltaTime = totalRunningTime - global.prevTotalRunningTime; // Time in milliseconds between frames
@@ -25,9 +26,11 @@ function gameLoop(totalRunningTime) {
 }
 
 function setupGame() {
-    global.playerObject = new Skeleton(300, 0, 56, 64);
-    global.leftMoveTrigger = new MoveTrigger(100, 100, 20, 900, 100);
-    global.rightMoveTrigger = new MoveTrigger(800, 100, 20, 900, -100);
+    global.playerObject = new Skeleton(700, 250, 56, 64);
+    global.leftMoveTrigger = new MoveTrigger(100, 100, 20, 900);
+    global.rightMoveTrigger = new MoveTrigger(800, 100, 20, 900);
+    global.topMoveTrigger = new VerticalMoveTrigger(100, 100, 700, 20);
+    global.bottomMoveTrigger = new VerticalMoveTrigger(100, 480, 700, 20);
     global.leftDrillTrigger = new DrillTrigger(0,0,10,10)
     global.rightDrillTrigger = new DrillTrigger(0,0,10,10)
     global.topDrillTrigger = new DrillTrigger(0,0,10,10)
@@ -47,12 +50,16 @@ function setupGame() {
     global.topDrillTrigger.name = "topDrillTrigger";
     global.bottomDrillTrigger.name = "bottomDrillTrigger";
 
-    //new Floor(0, 400, 9000, 40);
+    
     for(let i = 0; i<30; i++){
         for(let j = 0; j<10; j++){
     new BlockObject(i*50, 340+j*50, 50, 50);
         }
-}
+    }
+
+    //new Floor(0, 400, 9000, 40);
+
+// }
     //new BlockObject(300, 400, 50, 50);
     // setup your game here - means: Create instances of the GameObjects that belong to your game.
     // e.g.: 
