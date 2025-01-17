@@ -16,21 +16,24 @@ class DrillTrigger extends BaseGameObject {
         if (collidingObject.name == "BlockObject") {
             if(this.name == "leftDrillTrigger" && global.keys['a']){
                 collidingObject.health --
-                console.log(collidingObject.health)
+                // console.log(collidingObject.health)
                 if(collidingObject.health == 0) {
                 collidingObject.active = false;
+                global.ressources[collidingObject.ore]++
             }
             }
             if(this.name == "rightDrillTrigger" && global.keys['d']){
                 collidingObject.health --
                 if(collidingObject.health == 0) {
                 collidingObject.active = false;
+                global.ressources[collidingObject.ore]++
             }
             }
             if(this.name == "bottomDrillTrigger" && global.keys['s']){
                 collidingObject.health --
                 if(collidingObject.health == 0) {
                 collidingObject.active = false;
+                global.ressources[collidingObject.ore]++
             }
             }
             // if(this.name == "leftDrillTrigger" && global.keys['a']){

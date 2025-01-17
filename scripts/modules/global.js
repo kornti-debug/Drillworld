@@ -2,6 +2,10 @@ const global = {};
 
 global.canvas = document.querySelector("#canvas");
 global.ctx = canvas.getContext("2d");
+global.shopDiv = document.querySelector("#shop");
+global.resourceDisplayDiv = document.querySelector("#resourceDisplayDiv")
+global.shopCloseButton = document.querySelector("#shopClose")
+global.shopSellButton = document.querySelector("#shopSell")
 global.prevTotalRunningTime = 0;
 global.deltaTime = 0;
 global.allGameObjects = [];
@@ -15,6 +19,21 @@ global.pixelToMeter = 100;
 global.leftMoveTrigger;
 global.rightMoveTrigger;
 global.drillTrigger;
+global.shop;
+global.shopCollision;
+global.ressources = {
+    iron: 0,
+    copper: 0
+};
+global.money =0;
+
+global.blockTypes = [
+    { type: "iron", hardness: 20, value: 50, image: "./images/iron.jpg" },
+    { type: "dirt", hardness: 10, value: 10, image: "./images/dirt.jpg" },
+    { type: "copper", hardness: 30, value: 100, image: "./images/copper.jpg" },
+    { type: "empty" } // Represents an empty tile
+];
+
 
 global.getCanvasBounds = function () {
     let bounds =  {

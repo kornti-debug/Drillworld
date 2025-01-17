@@ -2,13 +2,17 @@
     position: relative;
     overflow: hidden;
     width: 1000px; /* change according to your game */
-    height: 500px; /* change according to your game */
+    height: 700px; /* change according to your game */
 }
 
 #canvas {
     position: absolute;
     left: 0;
     top: 0;
+}
+
+body{
+    color: white;
 }
 
 
@@ -23,4 +27,30 @@
     background-repeat: no-repeat;
 
 }
+
+#shop{
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    display: none;
+    position: absolute;
+    left: 250px;
+    top: 50px;
+    z-index: 1;
+    
+}
+
+#resourceDisplayDiv{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(48, 4, 4);
+    display: block;
+    position: absolute;
+    left: 250px;
+    top: 50px;
+    z-index: 1;
+    
+}
+
+
 /* add styles for other HTML elements of your game */

@@ -5,19 +5,24 @@ import { global } from "../modules/global.js";
 class BlockObject extends BaseGameObject {
     name = "BlockObject";
     blockGravityForces = true;
-    health = 10;
+    hardness = 10;
+    ore = "iron";
+    value = 50;
 
     reactToCollision = function (collidingObject)   {
-        // if (collidingObject.name == "Skeleton") {
-        //     // console.log("huh")
-        //     collidingObject.x = collidingObject.previousX;
-        //     collidingObject.y = collidingObject.previousY;
-        // }
+        if (collidingObject.name == "Skeleton") {
+            // console.log("huh")
+            collidingObject.x = collidingObject.previousX;
+            collidingObject.y = collidingObject.previousY;
+        }
     }
 
-    constructor (x, y, width, height) {
+    constructor (x, y, width, height, health, ore, value, imagePath) {
         super(x, y, width, height);
-        this.loadImages(["./images/wall.jpg"]);
+        this.loadImages([imagePath]);
+        this.health = health
+        this.ore = ore
+        this.value = value
     }
 }
 

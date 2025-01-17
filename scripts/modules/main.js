@@ -5,6 +5,7 @@ import { BlockObject } from "../gameObjects/blockObject.js";
 import { Floor } from "../gameObjects/floor.js";
 import { DrillTrigger } from "../gameObjects/drillTrigger.js";
 import { VerticalMoveTrigger } from "../gameObjects/verticalMoveTrigger.js";
+import { Shop } from "../gameObjects/shop.js";
 
 function gameLoop(totalRunningTime) { 
     global.deltaTime = totalRunningTime - global.prevTotalRunningTime; // Time in milliseconds between frames
@@ -16,8 +17,9 @@ function gameLoop(totalRunningTime) {
         if (global.allGameObjects[i].active == true) {
             global.allGameObjects[i].storePositionOfPreviousFrame();
             global.allGameObjects[i].update();
-            global.checkCollisionWithAnyOther(global.allGameObjects[i]);
             global.allGameObjects[i].applyGravity();
+            global.checkCollisionWithAnyOther(global.allGameObjects[i]);
+
             global.allGameObjects[i].draw();
         }
     }
@@ -27,14 +29,15 @@ function gameLoop(totalRunningTime) {
 
 function setupGame() {
     global.playerObject = new Skeleton(700, 250, 56, 64);
-    global.leftMoveTrigger = new MoveTrigger(100, 100, 20, 900);
-    global.rightMoveTrigger = new MoveTrigger(800, 100, 20, 900);
+    global.leftMoveTrigger = new MoveTrigger(100, 100, 20, 400);
+    global.rightMoveTrigger = new MoveTrigger(800, 100, 20, 400);
     global.topMoveTrigger = new VerticalMoveTrigger(100, 100, 700, 20);
     global.bottomMoveTrigger = new VerticalMoveTrigger(100, 480, 700, 20);
     global.leftDrillTrigger = new DrillTrigger(0,0,10,10)
     global.rightDrillTrigger = new DrillTrigger(0,0,10,10)
     global.topDrillTrigger = new DrillTrigger(0,0,10,10)
     global.bottomDrillTrigger = new DrillTrigger(0,0,10,10)
+    global.shop = new Shop(400,250, 100,100);
 
     global.leftDrillTrigger.offset.left = 0;
     global.leftDrillTrigger.offset.top = global.playerObject.height / 2
@@ -50,12 +53,36 @@ function setupGame() {
     global.topDrillTrigger.name = "topDrillTrigger";
     global.bottomDrillTrigger.name = "bottomDrillTrigger";
 
+
+    for (let i = 0; i < 30; i++) {
+        for (let j = 0; j < 10; j++) { // 50 rows for deeper levels
+            const blockType = getBlockTypeForRow(j);
     
-    for(let i = 0; i<30; i++){
-        for(let j = 0; j<10; j++){
-    new BlockObject(i*50, 340+j*50, 50, 50);
+            // Skip creating a block for empty tiles
+            if (blockType.type === "empty") {
+                continue;
+            }
+    
+            // Create a block with the chosen type and properties
+            new BlockObject(
+                i * 50,               // x position
+                340 + j * 50,         // y position
+                50,                   // width
+                50,                   // height
+                blockType.hardness,   // health/hardness
+                blockType.type,       // type (e.g., "iron", "dirt", etc.)
+                blockType.value,      // value
+                blockType.image       // image path
+            );
         }
     }
+    
+    // for(let i = 0; i<30; i++){
+    //     for(let j = 0; j<50; j++){
+    // new BlockObject(i*50, 340+j*50, 50, 50, 20, "iron", 5, "./images/iron.jpg");
+    // console.log()
+    //     }
+    // }
 
     //new Floor(0, 400, 9000, 40);
 
@@ -71,6 +98,41 @@ function setupGame() {
    
 }
 
+function getBlockTypeForRow(row) {
+    let probabilities;
+
+    if (row < 30) {
+        // Higher levels: Mostly iron, dirt, and empty blocks
+        probabilities = {
+            iron: 0.4,
+            dirt: 0.5,
+            empty: 0.1
+        };
+    } else {
+        // Deeper levels: Introduce copper, reduce common ores
+        probabilities = {
+            iron: 0.3,
+            dirt: 0.2,
+            copper: 0.3,
+            empty: 0.2
+        };
+    }
+
+    
+    // Choose a block type based on probabilities
+    const random = Math.random();
+    let cumulative = 0;
+
+    for (const [type, probability] of Object.entries(probabilities)) {
+        cumulative += probability;
+        if (random < cumulative) {
+            return global.blockTypes.find(block => block.type === type);
+        }
+    }
+
+    // Default to empty if no match (should not happen with proper probabilities)
+    return global.blockTypes.find(block => block.type === "empty");
+}
 setupGame();
 requestAnimationFrame(gameLoop);
 

@@ -57,18 +57,18 @@ class BaseGameObject {
 
         this.physicsData.fallVelocity += global.gravityForce * global.deltaTime * global.pixelToMeter;
 
-        if (this.physicsData.jumpForce > 0) {
-            if (this.physicsData.isGrounded == true) {
-               this.physicsData.fallVelocity = 0;
-            }
-            this.physicsData.isGrounded = false;
-            this.physicsData.fallVelocity -= (global.gravityForce * global.deltaTime * global.pixelToMeter)  * 2;
-            this.physicsData.jumpForce -= this.physicsData.jumpForceDecay * global.deltaTime;
-            this.physicsData.jumpForce = Math.max(0, this.physicsData.jumpForce);
-            if (this.physicsData.fallVelocity > 0 || this.physicsData.jumpForce == 0) {
-                this.physicsData.jumpForce = 0;
-            }
-        }
+        // if (this.physicsData.jumpForce > 0) {
+        //     if (this.physicsData.isGrounded == true) {
+        //        this.physicsData.fallVelocity = 0;
+        //     }
+        //     this.physicsData.isGrounded = false;
+        //     this.physicsData.fallVelocity -= (global.gravityForce * global.deltaTime * global.pixelToMeter)  * 2;
+        //     this.physicsData.jumpForce -= this.physicsData.jumpForceDecay * global.deltaTime;
+        //     this.physicsData.jumpForce = Math.max(0, this.physicsData.jumpForce);
+        //     if (this.physicsData.fallVelocity > 0 || this.physicsData.jumpForce == 0) {
+        //         this.physicsData.jumpForce = 0;
+        //     }
+        // }
   
         if (this.physicsData.fallVelocity > this.physicsData.terminalVelocity * global.pixelToMeter) {
             this.physicsData.fallVelocity = this.physicsData.terminalVelocity  * global.pixelToMeter;
@@ -81,6 +81,7 @@ class BaseGameObject {
             let otherObject = global.allGameObjects[i];
             if (otherObject.active == true && otherObject.blockGravityForces == true) {
                 let collisionHappened = global.detectBoxCollision(this, otherObject);
+
                 if (collisionHappened) {
                         if (this.physicsData.fallVelocity > 0) {
                             this.physicsData.isGrounded = true;
@@ -91,6 +92,7 @@ class BaseGameObject {
                         }
                         this.physicsData.jumpForce = 0;
                         this.physicsData.fallVelocity = 0;
+
                 }
             }   
         }    
