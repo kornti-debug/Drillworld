@@ -8,7 +8,10 @@ function move(event) {
 
 
     if(global.keys['d']){
+        if (global.playerObject.xVelocity == 0)
+                        global.playerObject.switchCurrentSprites(27, 35);
         global.playerObject.xVelocity = 500;
+        
     }
     if(global.keys['a']){
         global.playerObject.xVelocity = -500;

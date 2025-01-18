@@ -30,7 +30,7 @@ function gameLoop(totalRunningTime) {
 }
 
 function setupGame() {
-    global.playerObject = new Skeleton(700, 250, 56, 64);
+    global.playerObject = new Skeleton(700, 250, 64, 64);
     global.leftMoveTrigger = new MoveTrigger(100, 100, 20, 400);
     global.rightMoveTrigger = new MoveTrigger(800, 100, 20, 400);
     global.topMoveTrigger = new VerticalMoveTrigger(100, 100, 700, 20);
@@ -69,7 +69,7 @@ function setupGame() {
 
 
     for (let i = 0; i < 30; i++) {
-        for (let j = 0; j < 25; j++) { // 50 rows for deeper levels
+        for (let j = 0; j < 50; j++) { // 50 rows for deeper levels
             const blockType = getBlockTypeForRow(j);
     
             // Skip creating a block for empty tiles
@@ -79,10 +79,10 @@ function setupGame() {
     
             // Create a block with the chosen type and properties
             new BlockObject(
-                i * 50,               // x position
-                340 + j * 50,         // y position
-                50,                   // width
-                50,                   // height
+                i * 75,               // x position
+                340 + j * 75,         // y position
+                75,                   // width
+                75,                   // height
                 blockType.hardness,   // health/hardness
                 blockType.type,       // type (e.g., "iron", "dirt", etc.)
                 blockType.value,      // value

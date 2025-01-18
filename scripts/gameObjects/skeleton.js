@@ -18,10 +18,10 @@ class Skeleton extends BaseGameObject {
 
     getBoxBounds = function () {
         let bounds = {
-            left: this.x + 18,
-            right: this.x + this.width - 22,
-            top: this.y + 14,
-            bottom: this.y + this.height - 3
+            left: this.x +10,
+            right: this.x + this.width-10,
+            top: this.y -10,
+            bottom: this.y + this.height
         }
         return bounds;
     }
@@ -73,10 +73,11 @@ class Skeleton extends BaseGameObject {
         this.updateJetpack(global.deltaTime)
         this.x += this.xVelocity * global.deltaTime;
         this.y += this.yVelocity * global.deltaTime;
-
+        // global.playerObject.switchCurrentSprites(6, 10);
 
         if (this.xVelocity == 0) {
-            global.playerObject.switchCurrentSprites(this.animationData.firstSpriteIndex, this.animationData.firstSpriteIndex);
+            // global.playerObject.switchCurrentSprites(this.animationData.firstSpriteIndex, this.animationData.firstSpriteIndex);
+            // console.log(this.animationData.firstSpriteIndex)
         }
     }
 
@@ -100,7 +101,7 @@ class Skeleton extends BaseGameObject {
     constructor(x, y, width, height) {
         super(x, y, width, height);
         //this.loadImages(["./images/apple.png"]);
-        this.loadImagesFromSpritesheet("./images/BODY_skeleton.png", 9, 4);
+        this.loadImagesFromSpritesheet("./images/DrillenDigman.png", 5, 6);
     }
 }
 

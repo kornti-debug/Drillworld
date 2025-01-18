@@ -2,6 +2,7 @@ const global = {};
 
 global.canvas = document.querySelector("#canvas");
 global.ctx = canvas.getContext("2d");
+global.ctx.imageSmoothingEnabled = false;
 global.shopDiv = document.querySelector("#shop");
 global.resourceDisplayDiv = document.querySelector("#resourceDisplayDiv")
 global.shopCloseButton = document.querySelector("#shopClose")
