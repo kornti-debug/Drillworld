@@ -18,7 +18,9 @@ function gameLoop(totalRunningTime) {
             global.allGameObjects[i].storePositionOfPreviousFrame();
             global.allGameObjects[i].update();
             global.allGameObjects[i].applyGravity();
-            global.checkCollisionWithAnyOther(global.allGameObjects[i]);
+            if (global.allGameObjects[i].checkCollisions) {
+                global.checkCollisionWithAnyOther(global.allGameObjects[i]);
+            }
 
             global.allGameObjects[i].draw();
         }
@@ -33,6 +35,14 @@ function setupGame() {
     global.rightMoveTrigger = new MoveTrigger(800, 100, 20, 400);
     global.topMoveTrigger = new VerticalMoveTrigger(100, 100, 700, 20);
     global.bottomMoveTrigger = new VerticalMoveTrigger(100, 480, 700, 20);
+    global.playerObject.checkCollisions = true;
+    global.leftMoveTrigger.checkCollisions = true;
+    global.rightMoveTrigger.checkCollisions = true;
+    global.topMoveTrigger.checkCollisions = true;
+    global.bottomMoveTrigger.checkCollisions = true;
+    global.topMoveTrigger.name = "topMoveTrigger";
+    global.bottomMoveTrigger.name = "bottomMoveTrigger";
+
     global.leftDrillTrigger = new DrillTrigger(0,0,10,10)
     global.rightDrillTrigger = new DrillTrigger(0,0,10,10)
     global.topDrillTrigger = new DrillTrigger(0,0,10,10)
@@ -52,10 +62,14 @@ function setupGame() {
     global.rightDrillTrigger.name = "rightDrillTrigger";
     global.topDrillTrigger.name = "topDrillTrigger";
     global.bottomDrillTrigger.name = "bottomDrillTrigger";
+    global.leftDrillTrigger.checkCollisions = true;
+    global.rightDrillTrigger.checkCollisions = true;
+    global.bottomDrillTrigger.checkCollisions = true;
+    global.topDrillTrigger.checkCollisions = true;
 
 
     for (let i = 0; i < 30; i++) {
-        for (let j = 0; j < 10; j++) { // 50 rows for deeper levels
+        for (let j = 0; j < 25; j++) { // 50 rows for deeper levels
             const blockType = getBlockTypeForRow(j);
     
             // Skip creating a block for empty tiles
@@ -101,20 +115,20 @@ function setupGame() {
 function getBlockTypeForRow(row) {
     let probabilities;
 
-    if (row < 30) {
+    if (row < 5) {
         // Higher levels: Mostly iron, dirt, and empty blocks
         probabilities = {
-            iron: 0.4,
-            dirt: 0.5,
+            iron: 0.1,
+            dirt: 0.8,
             empty: 0.1
         };
     } else {
         // Deeper levels: Introduce copper, reduce common ores
         probabilities = {
-            iron: 0.3,
-            dirt: 0.2,
-            copper: 0.3,
-            empty: 0.2
+            iron: 0.1,
+            dirt: 0.7,
+            copper: 0.1,
+            empty: 0.1
         };
     }
 

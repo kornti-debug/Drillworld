@@ -5,9 +5,7 @@ let isFlying = false;
 function move(event) {
 
     global.keys[event.key] = true;
-    // console.log(global.keys[event.key])
-    // // if(global.keys)
-    // console.log(global.keys['d'])
+
 
     if(global.keys['d']){
         global.playerObject.xVelocity = 500;
@@ -15,24 +13,18 @@ function move(event) {
     if(global.keys['a']){
         global.playerObject.xVelocity = -500;
     }
-    if(global.keys['w']){
-        // if(!isFlying)
-            // console.log(global.playerObject.yVelocity)
-            global.gravityForce = 0
-             global.playerObject.yVelocity -= global.playerObject.jetpackForce
-            // global.playerObject.yVelocity = -200;
-                //          setTimeout(() => {
-                //     global.playerObject.useGravityForces = false;
-                //  }, 600);
-    }
+    // if(global.keys['w']){
+
+    //         global.gravityForce = 0
+    //          global.playerObject.yVelocity -= global.playerObject.jetpackForce
+    // }
     if(global.keys['s']){
-        global.playerObject.yVelocity = 500;
+        // global.playerObject.yVelocity = 500;
     }
 
     if(global.keys['e']){
         populateResources();
-        if(global.shopDiv.style.display == "none"){
-                    global.shopDiv.style.display = "block"} else {global.shopDiv.style.display = "none"}
+        global.shopDiv.style.display = global.shopDiv.style.display === "block" ? "none" : "block";
     }
 
 
@@ -70,7 +62,7 @@ function stop(event) {
         global.gravityForce = 4;
     }
     if(!global.keys['s']){
-        global.playerObject.yVelocity = 0;
+        // global.playerObject.yVelocity = 0;
     }
 
 }

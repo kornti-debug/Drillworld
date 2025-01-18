@@ -3,7 +3,7 @@ import { global } from "../modules/global.js";
 
 class VerticalMoveTrigger extends BaseGameObject {
     backGroundDiv = null;
-    blockGravityForces = true;
+    blockGravityForces = false;
     name = "verticalMoveTrigger";
 
     update = function () {
@@ -21,8 +21,14 @@ class VerticalMoveTrigger extends BaseGameObject {
 
 
         if (collidingObject.name == "Skeleton") {
-            let shiftBy = collidingObject.yVelocity * global.deltaTime;
+            let shiftBy;
+            if (this.name == "topMoveTrigger"){
+                shiftBy = collidingObject.yVelocity * global.deltaTime;
+            } else {
+                shiftBy = collidingObject.physicsData.prevFallingVelocity;
+            }
             global.verticalBackgroundShift += shiftBy * -1;
+
             // console.log(shiftBy,", ", global.backgroundShift)
 
             if (global.verticalBackgroundShift < global.backgroundMaxShift) {
@@ -34,7 +40,7 @@ class VerticalMoveTrigger extends BaseGameObject {
                 collidingObject.y = collidingObject.previousY;
             }
             else {
-                global.topMoveTrigger.y += shiftBy;
+                global.topMoveTrigger.y += shiftBy ;
                 global.bottomMoveTrigger.y += shiftBy;
             }
         }

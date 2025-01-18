@@ -8,6 +8,14 @@ class Skeleton extends BaseGameObject {
     jetpackForce = 30;
     useGravityForces = true;
 
+    jetpackData = {
+        currentForce: 0,
+        maxForce: 400,
+        acceleration: 200,    // How quickly jetpack builds up
+        deceleration: 40,   // How quickly jetpack force fades
+        isFlying: false
+    };
+
     getBoxBounds = function () {
         let bounds = {
             left: this.x + 18,
@@ -18,9 +26,55 @@ class Skeleton extends BaseGameObject {
         return bounds;
     }
 
+    updateJetpack = function(deltaTime) {
+        
+        if (global.keys['w']) {
+            this.jetpackData.isFlying = true;
+            // Gradually increase jetpack force
+            this.jetpackData.currentForce += this.jetpackData.acceleration * deltaTime;
+
+            // Cap the force
+            this.jetpackData.currentForce = Math.min(
+                this.jetpackData.currentForce, 
+                this.jetpackData.maxForce
+            );
+
+
+            
+            // Apply upward force
+            this.physicsData.fallVelocity = 0;
+
+            this.yVelocity = -this.jetpackData.currentForce;
+        }
+        //  else if (this.jetpackData.isFlying) {
+        //     // Gradually decrease jetpack force
+        //     this.jetpackData.currentForce -= this.jetpackData.deceleration * deltaTime;
+            
+        //     // Ensure force doesn't go negative
+        //     this.jetpackData.currentForce = Math.max(0, this.jetpackData.currentForce);
+            
+        //     if (this.jetpackData.currentForce <= 0) {
+        //         this.jetpackData.isFlying = false;
+        //     }
+        // }
+
+        // Cap the vertical velocity
+        this.physicsData.fallVelocity = Math.max(
+            -this.physicsData.terminalVelocity * global.pixelToMeter,
+            Math.min(
+                this.physicsData.fallVelocity,
+                this.physicsData.terminalVelocity * global.pixelToMeter
+            )
+        );
+    }
+
     update = function() {
+
+        this.updateJetpack(global.deltaTime)
         this.x += this.xVelocity * global.deltaTime;
         this.y += this.yVelocity * global.deltaTime;
+
+
         if (this.xVelocity == 0) {
             global.playerObject.switchCurrentSprites(this.animationData.firstSpriteIndex, this.animationData.firstSpriteIndex);
         }

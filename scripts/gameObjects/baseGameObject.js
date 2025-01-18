@@ -13,6 +13,7 @@ class BaseGameObject {
     blockGravityForces = false;
     prevFallingVelocity = 0;
     index = -1;
+    checkCollisions = false;
 
     physicsData = {
         "fallVelocity": 0,
