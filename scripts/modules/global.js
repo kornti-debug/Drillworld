@@ -89,6 +89,7 @@ global.blockTypes = [
     { type: "iron", hardness: 20, value: 50, image: "./images/iron.jpg" },
     { type: "dirt", hardness: 10, value: 10, image: "./images/dirt.jpg" },
     { type: "copper", hardness: 30, value: 100, image: "./images/copper.jpg" },
+    { type: "arkenstone", hardness: 200, value: 1000, image: "./images/arkenstone.png" },
     { type: "empty" } // Represents an empty tile
 ];
 

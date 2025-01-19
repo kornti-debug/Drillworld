@@ -66,9 +66,34 @@ function setupGame() {
     global.bottomDrillTrigger.checkCollisions = true;
     global.topDrillTrigger.checkCollisions = true;
 
+    // Randomly generate a position for the arkenstone
+    const arkenstonePosition = {
+        i: Math.floor(Math.random() * 10 + 5), // Random column index (0 to 29)
+        j: Math.floor(Math.random() * 10 +15) // Random row index (0 to 49)
+    };
 
-    for (let i = 0; i < 30; i++) {
-        for (let j = 0; j < 50; j++) { // 50 rows for deeper levels
+
+    for (let i = 0; i < 20; i++) {
+        for (let j = 0; j < 30; j++) { // 50 rows for deeper levels
+
+
+            // Check if this position matches the arkenstone position
+        if (i === arkenstonePosition.i && j === arkenstonePosition.j) {
+            // Create the arkenstone block
+            new BlockObject(
+                i * 75,               // x position
+                340 + j * 75,         // y position
+                75,                   // width
+                75,                   // height
+                100,                  // health/hardness
+                "arkenstone",         // type
+                1000,                 // value (high value for rare ore)
+                "./images/arkenstone.png" // image path
+            );
+            continue; // Skip the normal block creation for this position
+        }
+
+
             const blockType = getBlockTypeForRow(j);
     
             // Skip creating a block for empty tiles
@@ -89,26 +114,6 @@ function setupGame() {
             );
         }
     }
-    
-    // for(let i = 0; i<30; i++){
-    //     for(let j = 0; j<50; j++){
-    // new BlockObject(i*50, 340+j*50, 50, 50, 20, "iron", 5, "./images/iron.jpg");
-    // console.log()
-    //     }
-    // }
-
-    //new Floor(0, 400, 9000, 40);
-
-// }
-    //new BlockObject(300, 400, 50, 50);
-    // setup your game here - means: Create instances of the GameObjects that belong to your game.
-    // e.g.: 
-    /*    
-                global.playerObject = new PacMan(200, 300, 60, 60);
-                new Wall(0, 0, 100, 100);
-                new Candy(100, 100, 100, 100);
-    }*/
-   
 }
 
 function getBlockTypeForRow(row) {
