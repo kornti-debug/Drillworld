@@ -20,7 +20,7 @@ class VerticalMoveTrigger extends BaseGameObject {
     reactToCollision = function (collidingObject)   {
 
 
-        if (collidingObject.name == "Skeleton") {
+        if (collidingObject.name == "Player") {
             let shiftBy;
             if (this.name == "topMoveTrigger"){
                 shiftBy = collidingObject.yVelocity * global.deltaTime;

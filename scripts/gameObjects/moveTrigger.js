@@ -25,7 +25,7 @@ class MoveTrigger extends BaseGameObject {
     reactToCollision = function (collidingObject)   {
 
 
-        if (collidingObject.name == "Skeleton") {
+        if (collidingObject.name == "Player") {
             let shiftBy = collidingObject.xVelocity * global.deltaTime;
 
             global.backgroundShift += shiftBy * -1;

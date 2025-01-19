@@ -1,8 +1,7 @@
 import { global } from "./global.js";
-import { Skeleton } from "../gameObjects/skeleton.js";
+import { Player } from "../gameObjects/player.js";
 import { MoveTrigger } from "../gameObjects/moveTrigger.js";
 import { BlockObject } from "../gameObjects/blockObject.js";
-import { Floor } from "../gameObjects/floor.js";
 import { DrillTrigger } from "../gameObjects/drillTrigger.js";
 import { VerticalMoveTrigger } from "../gameObjects/verticalMoveTrigger.js";
 import { Shop } from "../gameObjects/shop.js";
@@ -30,7 +29,7 @@ function gameLoop(totalRunningTime) {
 }
 
 function setupGame() {
-    global.playerObject = new Skeleton(700, 250, 64, 64);
+    global.playerObject = new Player(700, 250, 64, 64);
     global.leftMoveTrigger = new MoveTrigger(100, 100, 20, 400);
     global.rightMoveTrigger = new MoveTrigger(800, 100, 20, 400);
     global.topMoveTrigger = new VerticalMoveTrigger(100, 100, 700, 20);
@@ -122,12 +121,19 @@ function getBlockTypeForRow(row) {
             dirt: 0.8,
             empty: 0.1
         };
-    } else {
+    } else if (row <10 && row >5) {
         // Deeper levels: Introduce copper, reduce common ores
         probabilities = {
             iron: 0.1,
             dirt: 0.7,
             copper: 0.1,
+            empty: 0.1
+        };
+    } else {
+        probabilities = {
+            iron: 0.2,
+            dirt: 0.5,
+            copper: 0.2,
             empty: 0.1
         };
     }
@@ -147,6 +153,9 @@ function getBlockTypeForRow(row) {
     // Default to empty if no match (should not happen with proper probabilities)
     return global.blockTypes.find(block => block.type === "empty");
 }
+
+
+
 setupGame();
 requestAnimationFrame(gameLoop);
 

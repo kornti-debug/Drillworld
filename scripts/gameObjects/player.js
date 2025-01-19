@@ -1,12 +1,17 @@
 import { BaseGameObject } from "./baseGameObject.js";
 import { global } from "../modules/global.js";
 
-class Skeleton extends BaseGameObject {
-    name = "Skeleton";
+class Player extends BaseGameObject {
+    name = "Player";
     xVelocity = 0;
     yVelocity = 0;
     jetpackForce = 30;
     useGravityForces = true;
+    miningSpeed= 1.0;
+    health = 100;
+    energy = 100;
+    currentDrillLevel = 0;
+    currentSuitLevel = 0;
 
     jetpackData = {
         currentForce: 0,
@@ -105,4 +110,4 @@ class Skeleton extends BaseGameObject {
     }
 }
 
-export {Skeleton}
+export {Player}

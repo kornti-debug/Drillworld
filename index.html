@@ -10,15 +10,35 @@
 </head>
 <body>
   <!-- further HTML elements, that should maybe be displayed above your game. E.g. Healtbar, .... -->
-  <div id="healthDisplay">Health:</div>
   <div id="gameContainer">
     <!-- further HTML elements, that should be behind your game. e.g. Background image, .... -->
     <div id="background"></div>
+    <div class="screen" id="startScreen">
+      welcome to drill world
+      <button id="startGame">Start Game</button> 
+      <button id="instructions">Instructions</button>
+      
+    </div>
 
-    <div id="shop">    
-    <div id="resourceDisplayDiv"></div>
+    <div class="screen" id="winScreen">
+      you win
+      <button class="restart">Restart Game</button>
+    </div>
+    <div class="screen" id="gameOverScreen">
+      you lose
+      <button class="restart">Restart Game</button>
+    </div>
+    <div id="playerStatsDiv"></div> 
+    <div id="shop">
+  
       <button id="shopClose">close</button>
-      <button id="shopSell">sell</button></div>
+      <button id="shopSell">sell</button> 
+    <div id="resourceDisplayDiv"></div>
+    <div id="upgradeDisplayDiv"></div>
+    <div id="itemDisplayDiv"></div>
+    <div id="buildDisplayDiv"></div>
+
+</div>
 
     <canvas id="canvas" width="1420" height="10000"></canvas> <!-- change the size attributes of your canvas according to your game -->
     <!-- further HTML elements, that should overlay your game. e.g. Main Screen, Game Over screen, .... -->

@@ -4,9 +4,19 @@ global.canvas = document.querySelector("#canvas");
 global.ctx = canvas.getContext("2d");
 global.ctx.imageSmoothingEnabled = false;
 global.shopDiv = document.querySelector("#shop");
+global.playerStatsDiv = document.querySelector("#playerStatsDiv")
 global.resourceDisplayDiv = document.querySelector("#resourceDisplayDiv")
+global.upgradeDisplayDiv = document.querySelector("#upgradeDisplayDiv")
+global.buildDisplayDiv = document.querySelector("#buildDisplayDiv")
+global.itemDisplayDiv = document.querySelector("#itemDisplayDiv")
+global.startScreenDiv = document.querySelector("#startScreen")
+global.winScreenDiv = document.querySelector("#winScreen")
+global.gameOverDiv = document.querySelector("#gameOverScreen")
 global.shopCloseButton = document.querySelector("#shopClose")
 global.shopSellButton = document.querySelector("#shopSell")
+global.startGameButton = document.querySelector("#startGame")
+global.instructionsButton = document.querySelector("#instructions")
+global.restartButton = document.querySelector("#restart")
 global.prevTotalRunningTime = 0;
 global.deltaTime = 0;
 global.allGameObjects = [];
@@ -14,7 +24,7 @@ global.playerObject = {};
 global.keys = {};
 global.backgroundShift = 0;
 global.verticalBackgroundShift = 0;
-global.backgroundMaxShift = -600;
+global.backgroundMaxShift = -2000;
 global.gravityForce = 4;
 global.pixelToMeter = 100;
 global.leftMoveTrigger;
@@ -22,11 +32,58 @@ global.rightMoveTrigger;
 global.drillTrigger;
 global.shop;
 global.shopCollision;
+global.money =0;
+
 global.ressources = {
     iron: 0,
     copper: 0
 };
-global.money =0;
+
+global.arkenstone = false;
+
+global.upgrades = {
+    drills: [
+        {
+            name: "Basic Drill",
+            cost: 100,
+            miningSpeed: 1.0, // Baseline speed multiplier
+            description: "A basic drill with average mining speed.",
+        },
+        {
+            name: "Advanced Drill",
+            cost: 300,
+            miningSpeed: 1.5,
+            description: "Faster mining for more efficient digging.",
+        },
+        {
+            name: "Diamond Drill",
+            cost: 800,
+            miningSpeed: 2.0,
+            description: "Unstoppable speed for mining rare ores.",
+        },
+    ],
+    suits: [
+        {
+            name: "Basic Suit",
+            cost: 200,
+            healthBonus: 10,
+            description: "Standard suit with decent protection.",
+        },
+        {
+            name: "Reinforced Suit",
+            cost: 500,
+            healthBonus: 25,
+            description: "Extra armor for improved survivability.",
+        },
+        {
+            name: "Exoskeleton Suit",
+            cost: 1000,
+            healthBonus: 50,
+            description: "Maximum protection and enhanced strength.",
+        },
+    ],
+};
+
 
 global.blockTypes = [
     { type: "iron", hardness: 20, value: 50, image: "./images/iron.jpg" },

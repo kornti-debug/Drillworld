@@ -46,10 +46,85 @@ body{
     background-color: rgb(48, 4, 4);
     display: block;
     position: absolute;
+    left: 50px;
+    top: 50px;
+    z-index: 1;
+    
+}
+#upgradeDisplayDiv{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(7, 116, 13);
+    display: block;
+    position: absolute;
+    left: 50px;
+    top: 250px;
+    z-index: 1;
+    
+}
+#itemDisplayDiv{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(114, 14, 109);
+    display: block;
+    position: absolute;
     left: 250px;
     top: 50px;
     z-index: 1;
     
+}
+#buildDisplayDiv{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(14, 89, 114);
+    display: block;
+    position: absolute;
+    left: 250px;
+    top: 250px;
+    z-index: 1;
+    
+}
+#playerStatsDiv{
+    width: 400px;
+    height: 20px;
+    background-color: rgb(14, 89, 114);
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 1;
+    
+}
+#startScreen{
+
+    display: block;
+
+    
+}
+#winScreen{
+
+    display: none;
+
+    
+}
+#gameOverScreen{
+
+    display: none;
+
+    
+}
+
+.screen{
+    background-color: rgb(70, 70, 45);
+    width: 1000px; /* change according to your game */
+    height: 700px; /* change according to your game */
+
+    position: absolute;
+    z-index: 2;
+}
+
+p{
+    margin: 0
 }
 
 
