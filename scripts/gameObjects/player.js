@@ -81,7 +81,7 @@ class Player extends BaseGameObject {
         // global.playerObject.switchCurrentSprites(6, 10);
 
         if (this.xVelocity == 0) {
-            // global.playerObject.switchCurrentSprites(this.animationData.firstSpriteIndex, this.animationData.firstSpriteIndex);
+            global.playerObject.switchCurrentSprites(this.animationData.firstSpriteIndex, this.animationData.firstSpriteIndex);
             // console.log(this.animationData.firstSpriteIndex)
         }
     }

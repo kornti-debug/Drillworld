@@ -41,6 +41,8 @@ function setupGame() {
     global.bottomMoveTrigger.checkCollisions = true;
     global.topMoveTrigger.name = "topMoveTrigger";
     global.bottomMoveTrigger.name = "bottomMoveTrigger";
+    global.leftMoveTrigger.name = "leftMoveTrigger";
+    global.rightMoveTrigger.name = "rightMoveTrigger";
 
     global.leftDrillTrigger = new DrillTrigger(0,0,10,10)
     global.rightDrillTrigger = new DrillTrigger(0,0,10,10)

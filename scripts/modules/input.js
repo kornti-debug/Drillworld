@@ -8,14 +8,18 @@ function move(event) {
 
 
     if (global.keys['d']) {
-        if (global.playerObject.xVelocity == 0)
-            // global.playerObject.switchCurrentSprites(27, 35);
-            global.playerObject.xVelocity = 500;
+        if (global.playerObject.xVelocity == 0 && !global.isDigging){
+            global.playerObject.switchCurrentSprites(12, 17);    }
+        global.playerObject.xVelocity = 200;
+        global.playerObject.yVelocity = 0;}
 
-    }
+
     if (global.keys['a']) {
-        global.playerObject.xVelocity = -500;
-    }
+        if (global.playerObject.xVelocity == 0 && !global.isDigging){
+            global.playerObject.switchCurrentSprites(18, 23);    }
+        global.playerObject.xVelocity = -200;
+        global.playerObject.yVelocity = 0;}
+
     // if(global.keys['w']){
 
     //         global.gravityForce = 0
@@ -47,7 +51,7 @@ function showBuildings(){
     global.buildDisplayDiv.innerHTML = "buildings";
 
     const rocketButton = document.createElement("button");
-    rocketButton.textContent = `Build Rocket ($500)`;
+    rocketButton.textContent = `Build Rocket ($100 + arkenstone)`;
     rocketButton.addEventListener("click", () => buyBuilding());
     global.buildDisplayDiv.appendChild(rocketButton);
 }
@@ -107,7 +111,7 @@ function showUpgrades() {
 
 function buyBuilding(){
 
-    if (global.money >= 500 && global.arkenstone == true) {
+    if (global.money >= 100 && global.arkenstone == true) {
         winGame();
     } else {
         alert("Not enough money or ressources to purchase this building!");

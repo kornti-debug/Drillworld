@@ -30,6 +30,7 @@ global.pixelToMeter = 100;
 global.leftMoveTrigger;
 global.rightMoveTrigger;
 global.drillTrigger;
+global.isDigging = false;
 global.shop;
 global.shopCollision;
 global.money =0;

@@ -38,6 +38,12 @@ class MoveTrigger extends BaseGameObject {
             else if (global.backgroundShift > 0) {
                 global.backgroundShift = 0;
                 collidingObject.x = collidingObject.previousX;
+                // this.x = collidingObject.x;
+                // if(this.name =="leftMoveTrigger"){
+                //     global.topMoveTrigger.x =this.x
+                //     global.bottomMoveTrigger.x=this.x
+                    
+                // }
             }
             else {
                 global.leftMoveTrigger.x += shiftBy;

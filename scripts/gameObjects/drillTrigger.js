@@ -50,7 +50,7 @@ class DrillTrigger extends BaseGameObject {
             return true;
         }
         if (collidingObject.type == "arkenstone" && global.playerObject.currentDrillLevel > 1) {
-            return true;ij
+            return true;
         }
 
 
@@ -58,9 +58,29 @@ class DrillTrigger extends BaseGameObject {
     }
 
     isDigging = function (collidingObject) {
+
+
+        if(this.name == "bottomDrillTrigger"){
+            console.log("1")
+                global.playerObject.switchCurrentSprites(0, 2);
+        }
+        if(this.name == "leftDrillTrigger"){
+            console.log("2")
+
+                global.playerObject.switchCurrentSprites(6, 8);
+        }
+        if(this.name == "rightDrillTrigger"){
+            console.log("3")
+
+                global.playerObject.switchCurrentSprites(3, 5);
+        }
+        global.isDigging = true;
         collidingObject.hardness = collidingObject.hardness - global.playerObject.miningSpeed
         if (collidingObject.hardness <= 0) {
             collidingObject.active = false;
+            global.isDigging = false
+            global.playerObject.switchCurrentSprites(10, 10);
+
             if (collidingObject.type != "dirt" && collidingObject.type != "arkenstone")
                 global.ressources[collidingObject.type]++
             if (collidingObject.type == "arkenstone") { }

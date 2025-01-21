@@ -200,9 +200,10 @@ class BaseGameObject {
         this.animationData.lastSpriteIndex = lastSpriteIndex;
     }
 
-    reactToCollision = function(collidingObject) {
+    reactToCollision = function (collidingObject) {
 
-    }
+    };
+    
 
     constructor(x, y, width, height) {
         this.x = x;
