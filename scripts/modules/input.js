@@ -6,19 +6,31 @@ function move(event) {
 
     global.keys[event.key] = true;
 
+    // if (global.keys['w']) {
+    //     global.playerObject.yVelocity += -100;
+    //   }
 
     if (global.keys['d']) {
         if (global.playerObject.xVelocity == 0 && !global.isDigging){
-            global.playerObject.switchCurrentSprites(12, 17);    }
-        global.playerObject.xVelocity = 200;
-        global.playerObject.yVelocity = 0;}
-
-
-    if (global.keys['a']) {
-        if (global.playerObject.xVelocity == 0 && !global.isDigging){
+            global.playerObject.switchCurrentSprites(12, 17);    
+        }
+        global.playerObject.xVelocity = global.playerObject.speed;
+        global.playerObject.yVelocity = 0;
+    } else if (global.keys['a']) {
+        if (global.playerObject.xVelocity == 0 && !global.idsDigging){
             global.playerObject.switchCurrentSprites(18, 23);    }
-        global.playerObject.xVelocity = -200;
-        global.playerObject.yVelocity = 0;}
+        global.playerObject.xVelocity = -global.playerObject.speed;;
+        global.playerObject.yVelocity = 0;
+ } else {global.playerObject.xVelocity = 0;}
+
+
+
+
+    // if (global.keys['a']) {
+    //     if (global.playerObject.xVelocity == 0 && !global.isDigging){
+    //         global.playerObject.switchCurrentSprites(18, 23);    }
+    //     global.playerObject.xVelocity = -global.playerObject.speed;;
+    //     global.playerObject.yVelocity = 0;} else {global.playerObject.xVelocity = 0;}
 
     // if(global.keys['w']){
 

@@ -12,6 +12,8 @@ class BlockObject extends BaseGameObject {
     reactToCollision = function (collidingObject)   {
         if (collidingObject.name == "Player") {
 
+            console.log("collided")
+
         //     // Calculate the overlaps
         // const overlapX = Math.min(
         //     this.x + this.width - collidingObject.x,
@@ -46,9 +48,11 @@ class BlockObject extends BaseGameObject {
         //         collidingObject.velocityY = 0; // Stop upward movement
         //     }
         // }
-            console.log("huh")
+            // console.log("huh")
             collidingObject.x = collidingObject.previousX;
             collidingObject.y = collidingObject.previousY;
+
+
         }
     }
 

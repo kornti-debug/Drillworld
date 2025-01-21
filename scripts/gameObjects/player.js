@@ -12,6 +12,8 @@ class Player extends BaseGameObject {
     energy = 100;
     currentDrillLevel = 0;
     currentSuitLevel = 0;
+    speed = 200
+    friction = 0.5
 
     jetpackData = {
         currentForce: 0,

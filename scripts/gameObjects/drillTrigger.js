@@ -79,7 +79,7 @@ class DrillTrigger extends BaseGameObject {
         if (collidingObject.hardness <= 0) {
             collidingObject.active = false;
             global.isDigging = false
-            global.playerObject.switchCurrentSprites(10, 10);
+            // global.playerObject.switchCurrentSprites(10, 10);
 
             if (collidingObject.type != "dirt" && collidingObject.type != "arkenstone")
                 global.ressources[collidingObject.type]++
