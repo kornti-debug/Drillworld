@@ -61,21 +61,23 @@ class DrillTrigger extends BaseGameObject {
 
 
         if(this.name == "bottomDrillTrigger"){
-            console.log("1")
                 global.playerObject.switchCurrentSprites(0, 2);
         }
         if(this.name == "leftDrillTrigger"){
-            console.log("2")
 
                 global.playerObject.switchCurrentSprites(6, 8);
         }
         if(this.name == "rightDrillTrigger"){
-            console.log("3")
 
                 global.playerObject.switchCurrentSprites(3, 5);
         }
         global.isDigging = true;
-        collidingObject.hardness = collidingObject.hardness - global.playerObject.miningSpeed
+        collidingObject.hardness = collidingObject.hardness - global.playerObject.miningSpeed * global.deltaTime
+        if(collidingObject.hardness <= collidingObject.originalHardness*0.66){
+            collidingObject.loadImages([`./images/ores/${collidingObject.type}1.png`])
+            collidingObject.hasBeenDrawn = false
+        }
+
         if (collidingObject.hardness <= 0) {
             collidingObject.active = false;
             global.isDigging = false

@@ -2,8 +2,8 @@ import { BaseGameObject } from "./baseGameObject.js";
 import { global } from "../modules/global.js";
 
 
-class Shop extends BaseGameObject {
-    name = "Shop";
+class Rocket extends BaseGameObject {
+    name = "Rocket";
     blockGravityForces = false;
 
     reactToCollision = function (collidingObject) {
@@ -37,8 +37,8 @@ class Shop extends BaseGameObject {
 
     constructor(x, y, width, height) {
         super(x, y, width, height);
-        this.loadImages(["./images/Shop.png"]);
+        this.loadImages(["./images/Rocket.png"]);
     }
 }
 
-export { Shop };
+export { Rocket };

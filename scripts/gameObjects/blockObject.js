@@ -6,53 +6,33 @@ class BlockObject extends BaseGameObject {
     name = "BlockObject";
     blockGravityForces = true;
     hardness = 10;
+    originalHardness;
     type = "iron";
     value = 50;
+    staticImage = true; // New property to identify static blocks
+    hasBeenDrawn = false; // Tracks if the block has already been drawn
 
     reactToCollision = function (collidingObject)   {
         if (collidingObject.name == "Player") {
-
-            console.log("collided")
-
-        //     // Calculate the overlaps
-        // const overlapX = Math.min(
-        //     this.x + this.width - collidingObject.x,
-        //     collidingObject.x + collidingObject.width - this.x
-        // );
-        // const overlapY = Math.min(
-        //     this.y + this.height - collidingObject.y,
-        //     collidingObject.y + collidingObject.height - this.y
-        // );
-
-        // // Determine collision direction based on smaller overlap
-        // if (overlapX < overlapY) {
-        //     // Horizontal collision
-        //     if (collidingObject.x < this.x) {
-        //         // Player hits the left side of the block
-        //         collidingObject.x = this.x - collidingObject.width;
-        //     } else {
-        //         // Player hits the right side of the block
-        //         collidingObject.x = this.x + this.width;
-        //     }
-        //     collidingObject.velocityX = 0; // Stop horizontal movement
-        // } else {
-        //     // Vertical collision
-        //     if (collidingObject.y < this.y) {
-        //         // Player lands on top of the block
-        //         collidingObject.y = this.y - collidingObject.height;
-        //         collidingObject.velocityY = 0; // Stop vertical movement
-        //         collidingObject.onGround = true; // Ensure player is marked as on ground
-        //     } else {
-        //         // Player hits the bottom of the block
-        //         collidingObject.y = this.y + this.height;
-        //         collidingObject.velocityY = 0; // Stop upward movement
-        //     }
-        // }
-            // console.log("huh")
             collidingObject.x = collidingObject.previousX;
             collidingObject.y = collidingObject.previousY;
+        }
+    }
 
 
+    draw() {
+        console.log("test2")
+
+        if (this.staticImage && this.hasBeenDrawn) {
+            // Skip drawing if the block is static and already drawn
+            return;
+        }
+
+        let sprite = this.getNextSprite();
+        global.ctx.drawImage(sprite, this.x, this.y, this.width, this.height);
+
+        if (this.staticImage) {
+            this.hasBeenDrawn = true; // Mark as drawn after the first frame
         }
     }
 
@@ -60,6 +40,7 @@ class BlockObject extends BaseGameObject {
         super(x, y, width, height);
         this.loadImages([imagePath]);
         this.hardness = hardness
+        this.originalHardness = hardness
         this.type = type
         this.value = value
     }

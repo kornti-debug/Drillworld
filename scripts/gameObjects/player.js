@@ -7,7 +7,7 @@ class Player extends BaseGameObject {
     yVelocity = 0;
     jetpackForce = 30;
     useGravityForces = true;
-    miningSpeed= 1.0;
+    miningSpeed= 15.0;
     health = 100;
     energy = 100;
     currentDrillLevel = 0;

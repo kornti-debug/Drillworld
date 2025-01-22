@@ -5,6 +5,7 @@ import { BlockObject } from "../gameObjects/blockObject.js";
 import { DrillTrigger } from "../gameObjects/drillTrigger.js";
 import { VerticalMoveTrigger } from "../gameObjects/verticalMoveTrigger.js";
 import { Shop } from "../gameObjects/shop.js";
+import { Rocket } from "../gameObjects/Rocket.js"
 
 function gameLoop(totalRunningTime) { 
     global.deltaTime = totalRunningTime - global.prevTotalRunningTime; // Time in milliseconds between frames
@@ -24,7 +25,6 @@ function gameLoop(totalRunningTime) {
             global.allGameObjects[i].draw();
         }
 
-        console.log(global.playerObject.x,", "+ global.playerObject.y)
     }
 
     if (global.keys['d']) {
@@ -34,7 +34,7 @@ function gameLoop(totalRunningTime) {
         global.playerObject.xVelocity = global.playerObject.speed;
         global.playerObject.yVelocity = 0;
     } else if (global.keys['a']) {
-        if (global.playerObject.xVelocity == 0 && !global.idsDigging){
+        if (global.playerObject.xVelocity == 0 && !global.isDigging){
             global.playerObject.switchCurrentSprites(18, 23);    }
         global.playerObject.xVelocity = -global.playerObject.speed;;
         global.playerObject.yVelocity = 0;
@@ -63,7 +63,8 @@ function setupGame() {
     global.rightDrillTrigger = new DrillTrigger(0,0,10,10)
     global.topDrillTrigger = new DrillTrigger(0,0,10,10)
     global.bottomDrillTrigger = new DrillTrigger(0,0,10,10)
-    global.shop = new Shop(400,250, 100,100);
+    global.shop = new Shop(200,175, 200,150);
+    global.shop = new Rocket(600,50, 200,275);
 
     global.leftDrillTrigger.offset.left = 0;
     global.leftDrillTrigger.offset.top = global.playerObject.height / 2
@@ -99,7 +100,7 @@ function setupGame() {
             // Create the arkenstone block
             new BlockObject(
                 i * 75,               // x position
-                340 + j * 75,         // y position
+                325 + j * 75,         // y position
                 75,                   // width
                 75,                   // height
                 100,                  // health/hardness
@@ -121,7 +122,7 @@ function setupGame() {
             // Create a block with the chosen type and properties
             new BlockObject(
                 i * 75,               // x position
-                340 + j * 75,         // y position
+                325 + j * 75,         // y position
                 75,                   // width
                 75,                   // height
                 blockType.hardness,   // health/hardness

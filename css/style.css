@@ -21,12 +21,23 @@ body{
     left: 0;
     top: 0;
     width: 1000px; 
-    height: 1000px;
-    background-image: url("../images/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    height: 3000px;
+    background-image: url("../images/background1.png");
+    /* background-size: cover; */
+    background-repeat: repeat;
 
 }
+/* #underground {
+    position: absolute;
+    left: 0;
+    top: 325px;
+    width: 1000px; 
+    height: 325px;
+    background-image: url("../images/background.png");
+    /* background-size: cover; 
+    background-repeat: no-repeat;
+
+} */
 
 #shop{
     width: 500px;

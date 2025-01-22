@@ -47,19 +47,19 @@ global.upgrades = {
         {
             name: "Basic Drill",
             cost: 100,
-            miningSpeed: 1.0, // Baseline speed multiplier
+            miningSpeed: 30, // Baseline speed multiplier
             description: "A basic drill with average mining speed.",
         },
         {
             name: "Advanced Drill",
             cost: 300,
-            miningSpeed: 1.5,
+            miningSpeed: 50,
             description: "Faster mining for more efficient digging.",
         },
         {
             name: "Diamond Drill",
             cost: 800,
-            miningSpeed: 2.0,
+            miningSpeed: 100,
             description: "Unstoppable speed for mining rare ores.",
         },
     ],
@@ -87,10 +87,10 @@ global.upgrades = {
 
 
 global.blockTypes = [
-    { type: "iron", hardness: 20, value: 50, image: "./images/iron.jpg" },
-    { type: "dirt", hardness: 10, value: 10, image: "./images/dirt.jpg" },
-    { type: "copper", hardness: 30, value: 100, image: "./images/copper.jpg" },
-    { type: "arkenstone", hardness: 200, value: 1000, image: "./images/arkenstone.png" },
+    { type: "iron", hardness: 20, value: 50, image: "./images/ores/iron1.png" },
+    { type: "dirt", hardness: 10, value: 10, image: "./images/ores/dirt1.png" },
+    { type: "copper", hardness: 30, value: 100, image: "./images/ores/copper1.png" },
+    { type: "arkenstone", hardness: 200, value: 1000, image: "./images/ores/arkenstone1.png" },
     { type: "empty" } // Represents an empty tile
 ];
 
