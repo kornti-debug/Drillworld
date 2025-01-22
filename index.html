@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Hello, world!</title>
@@ -8,50 +9,59 @@
   <link rel="stylesheet" type="text/css" href="./css/style.css" />
   <link rel="icon" href="favicon.png">
 </head>
+
 <body>
   <!-- further HTML elements, that should maybe be displayed above your game. E.g. Healtbar, .... -->
   <div id="gameContainer">
     <!-- further HTML elements, that should be behind your game. e.g. Background image, .... -->
     <div id="background"></div>
     <div class="screen" id="startScreen">
-      welcome to drill world
-      <button id="startGame">Start Game</button> 
-      <button id="instructions">Instructions</button>
-      
+      <img id="DrillworldHeading" src="../images/DrillworldHeadline.png">
+      <div id="startContentSection">
+        <div id="startButtonSection">
+          <button class="button-9" role="button" id="startGame">Start Game</button>
+          <button class="button-9" role="button" id="instructions">Instructions</button>
+        </div>
+        <img id="DrillenDigmanDrawn" src="../images/DrillenDigmanDrawn.png">
+      </div>
     </div>
-
-    <div class="screen" id="winScreen">
-      you win
-      <button class="restart">Restart Game</button>
+    <div id="instructionsScreen" class="screen"> <p>Controls: Press WASD to move your character. To mine ore you simply "move" against the block and the character starts digging. To sell your items you need to go to the shop and press "e" Goal: you need to find the arkenstone to escape the planet.</p>
+      <button class="button-9" role="button" id="backToStartScreen">back</button>
     </div>
-    <div class="screen" id="gameOverScreen">
-      you lose
-      <button class="restart">Restart Game</button>
+      <div class="screen" id="winScreen">
+        you win
+        <button class="restart">Restart Game</button>
+      </div>
+      <div class="screen" id="gameOverScreen">
+        you lose
+        <button class="restart">Restart Game</button>
+      </div>
+      <div id="playerStatsDiv"></div>
+      <div id="enterShopDiv"> press "e" to enter shop</div>
+      <div id="shop">
+
+        <button id="shopClose">close</button>
+        <!-- <button id="shopSell">sell</button> -->
+        <div id="resourceDisplayDiv"></div>
+        <div id="upgradeDisplayDiv"></div>
+        <div id="itemDisplayDiv"></div>
+        <div id="buildDisplayDiv"></div>
+
+      </div>
+
+      <canvas id="canvas" width="1420" height="10000"></canvas>
+      <!-- change the size attributes of your canvas according to your game -->
+      <!-- further HTML elements, that should overlay your game. e.g. Main Screen, Game Over screen, .... -->
+      <!-- <div id="gameOverScreen"></div> -->
+      <!-- <div id="mainScreen"></div> -->
     </div>
-    <div id="playerStatsDiv"></div> 
-    <div id="enterShopDiv"> press "e" to enter shop</div>
-    <div id="shop">
-  
-      <button id="shopClose">close</button>
-      <button id="shopSell">sell</button> 
-    <div id="resourceDisplayDiv"></div>
-    <div id="upgradeDisplayDiv"></div>
-    <div id="itemDisplayDiv"></div>
-    <div id="buildDisplayDiv"></div>
+    <!-- further HTML elements, that should maybe be displayed below your game. E.g. Score, .... -->
+    <div id="scoreDisplay">Score: </div>
 
-</div>
+    <script type="module" src="./scripts/modules/global.js"></script>
+    <script type="module" src="./scripts/modules/input.js"></script>
+    <script type="module" src="./scripts/modules/main.js"></script>
 
-    <canvas id="canvas" width="1420" height="10000"></canvas> <!-- change the size attributes of your canvas according to your game -->
-    <!-- further HTML elements, that should overlay your game. e.g. Main Screen, Game Over screen, .... -->
-    <!-- <div id="gameOverScreen"></div> -->
-    <!-- <div id="mainScreen"></div> -->
-  </div>
-  <!-- further HTML elements, that should maybe be displayed below your game. E.g. Score, .... -->
-  <div id="scoreDisplay">Score: </div>
-
-  <script type="module" src="./scripts/modules/global.js"></script>
-  <script type="module" src="./scripts/modules/input.js"></script>
-  <script type="module" src="./scripts/modules/main.js"></script>
-  
 </body>
+
 </html>

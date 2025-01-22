@@ -26,7 +26,7 @@ function move(event) {
             showUpgrades();
             showItems();
             showBuildings();
-            renderPlayerStats();
+            // renderPlayerStats();
 
             const shopVisible = global.shopDiv.style.display === "block";
             global.shopDiv.style.display = shopVisible ? "none" : "block";
@@ -45,19 +45,20 @@ function showBuildings() {
     global.buildDisplayDiv.innerHTML = "buildings";
 
     const rocketButton = document.createElement("button");
+    rocketButton.className = "button-9"
     rocketButton.textContent = `Build Rocket ($100 + arkenstone)`;
     rocketButton.addEventListener("click", () => buyBuilding());
     global.buildDisplayDiv.appendChild(rocketButton);
 }
 
-function renderPlayerStats() {
-    playerStatsDiv.innerHTML = `
-        <p>Money: $${global.money}; 
-        Mining Speed: ${global.playerObject.miningSpeed}x; 
-        Health: ${global.playerObject.health}
-        Energy: ${global.playerObject.energy}</p>
-    `;
-}
+// function renderPlayerStats() {
+//     playerStatsDiv.innerHTML = `
+//         <p>Money: $${global.money}; 
+//         Mining Speed: ${global.playerObject.miningSpeed}x; 
+//         Health: ${global.playerObject.health}
+//         Energy: ${global.playerObject.energy}</p>
+//     `;
+// }
 
 function populateResources() {
     // Clear existing content
@@ -71,10 +72,11 @@ function populateResources() {
         global.resourceDisplayDiv.appendChild(resourceElement);
     }
     const sellButton = document.createElement("button");
+    sellButton.className = "button-9"
     sellButton.textContent = `sell ore`;
     sellButton.addEventListener("click", () => sellOres());
     global.resourceDisplayDiv.appendChild(sellButton);
-    renderPlayerStats();
+    // renderPlayerStats();
 }
 
 function showUpgrades() {
@@ -86,6 +88,7 @@ function showUpgrades() {
     if (currentDrillLevel < global.upgrades.drills.length) {
         const nextDrill = global.upgrades.drills[currentDrillLevel];
         const drillButton = document.createElement("button");
+        drillButton.className = "button-9"
         drillButton.textContent = `Buy ${nextDrill.name} ($${nextDrill.cost})`;
         drillButton.addEventListener("click", () => purchaseUpgrade("drills"));
         upgradeDisplayDiv.appendChild(drillButton);
@@ -96,6 +99,7 @@ function showUpgrades() {
     if (currentSuitLevel < global.upgrades.suits.length) {
         const nextSuit = global.upgrades.suits[currentSuitLevel];
         const suitButton = document.createElement("button");
+        suitButton.className = "button-9"
         suitButton.textContent = `Buy ${nextSuit.name} ($${nextSuit.cost})`;
         suitButton.addEventListener("click", () => purchaseUpgrade("suits"));
         upgradeDisplayDiv.appendChild(suitButton);
@@ -180,9 +184,13 @@ document.addEventListener("keyup", stop);
 
 global.shopCloseButton.addEventListener("click", closeShop);
 
-global.shopSellButton.addEventListener("click", sellOres)
+// global.shopSellButton.addEventListener("click", sellOres)
 
 global.startGameButton.addEventListener("click", startGame)
+
+global.instructionsButton.addEventListener("click", showInstructions)
+
+global.backToStartScreenButton.addEventListener("click", backToStartScreenButton)
 
 
 // document.addEventListener("mousemove", (event) => {
@@ -191,6 +199,16 @@ global.startGameButton.addEventListener("click", startGame)
 
 function startGame() {
     global.startScreenDiv.style.display = "none"
+}
+
+function showInstructions(){
+    global.startScreenDiv.style.display = "none"
+    global.instructionsScreenDiv.style.display = "block"
+}
+function backToStartScreenButton(){
+
+    global.instructionsScreenDiv.style.display = "none"
+        global.startScreenDiv.style.display = "block"
 }
 
 function closeShop() {

@@ -42,8 +42,20 @@ function gameLoop(totalRunningTime) {
         global.playerObject.yVelocity = 0;
  } else {global.playerObject.xVelocity = 0;}
     
-    requestAnimationFrame(gameLoop); // This keeps the gameLoop running indefinitely
+ renderPlayerStats()
+ 
+ requestAnimationFrame(gameLoop); // This keeps the gameLoop running indefinitely
 }
+
+function renderPlayerStats() {
+    playerStatsDiv.innerHTML = `
+        <p>Money: $${global.money}; 
+        Mining Speed: ${global.playerObject.miningSpeed}x; 
+        Health: ${global.playerObject.health}
+        Energy: ${global.playerObject.energy}</p>
+    `;
+}   
+
 
 function setupGame() {
     global.playerObject = new Player(500, 250, 64, 64);
