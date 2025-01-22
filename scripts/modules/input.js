@@ -6,59 +6,41 @@ function move(event) {
 
     global.keys[event.key] = true;
 
-    // if (global.keys['w']) {
-    //     global.playerObject.yVelocity += -100;
-    //   }
 
     if (global.keys['d']) {
-        if (global.playerObject.xVelocity == 0 && !global.isDigging){
-            global.playerObject.switchCurrentSprites(12, 17);    
+        if (global.playerObject.xVelocity == 0 && !global.isDigging) {
+            global.playerObject.switchCurrentSprites(12, 17);
         }
         global.playerObject.xVelocity = global.playerObject.speed;
         global.playerObject.yVelocity = 0;
     } else if (global.keys['a']) {
-        if (global.playerObject.xVelocity == 0 && !global.idsDigging){
-            global.playerObject.switchCurrentSprites(18, 23);    }
+        if (global.playerObject.xVelocity == 0 && !global.isDigging) {
+            global.playerObject.switchCurrentSprites(18, 23);
+        }
         global.playerObject.xVelocity = -global.playerObject.speed;;
         global.playerObject.yVelocity = 0;
- } else {global.playerObject.xVelocity = 0;}
-
-
-
-
-    // if (global.keys['a']) {
-    //     if (global.playerObject.xVelocity == 0 && !global.isDigging){
-    //         global.playerObject.switchCurrentSprites(18, 23);    }
-    //     global.playerObject.xVelocity = -global.playerObject.speed;;
-    //     global.playerObject.yVelocity = 0;} else {global.playerObject.xVelocity = 0;}
-
-    // if(global.keys['w']){
-
-    //         global.gravityForce = 0
-    //          global.playerObject.yVelocity -= global.playerObject.jetpackForce
-    // }
-    if (global.keys['s']) {
-        // global.playerObject.yVelocity = 500;
-    }
+    } else { global.playerObject.xVelocity = 0; }
 
     if (global.keys['e']) {
-        populateResources();
-        showUpgrades();
-        showItems();
-        showBuildings();
-        renderPlayerStats();
-        global.shopDiv.style.display = global.shopDiv.style.display === "block" ? "none" : "block";
-    }
+            populateResources();
+            showUpgrades();
+            showItems();
+            showBuildings();
+            renderPlayerStats();
 
+            const shopVisible = global.shopDiv.style.display === "block";
+            global.shopDiv.style.display = shopVisible ? "none" : "block";
+                   
+    }
 
 
 }
 
-function showItems(){
+function showItems() {
     global.itemDisplayDiv.innerHTML = "Items";
 }
 
-function showBuildings(){
+function showBuildings() {
 
     global.buildDisplayDiv.innerHTML = "buildings";
 
@@ -121,7 +103,7 @@ function showUpgrades() {
 
 }
 
-function buyBuilding(){
+function buyBuilding() {
 
     if (global.money >= 100 && global.arkenstone == true) {
         winGame();
@@ -165,7 +147,7 @@ function capitalize(str) {
 }
 
 
-function winGame(){
+function winGame() {
     global.winScreenDiv.style.display = "block"
 }
 
@@ -207,7 +189,7 @@ global.startGameButton.addEventListener("click", startGame)
 //     console.log(`x= ${event.clientX}, Y=${event.clientY}`)
 // })
 
-function startGame(){
+function startGame() {
     global.startScreenDiv.style.display = "none"
 }
 

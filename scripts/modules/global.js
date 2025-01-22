@@ -4,6 +4,7 @@ global.canvas = document.querySelector("#canvas");
 global.ctx = canvas.getContext("2d");
 global.ctx.imageSmoothingEnabled = false;
 global.shopDiv = document.querySelector("#shop");
+global.enterShopDiv = document.querySelector("#enterShopDiv");
 global.playerStatsDiv = document.querySelector("#playerStatsDiv")
 global.resourceDisplayDiv = document.querySelector("#resourceDisplayDiv")
 global.upgradeDisplayDiv = document.querySelector("#upgradeDisplayDiv")
@@ -32,7 +33,7 @@ global.rightMoveTrigger;
 global.drillTrigger;
 global.isDigging = false;
 global.shop;
-global.shopCollision;
+global.shopCollision = false;
 global.money =0;
 
 global.ressources = {

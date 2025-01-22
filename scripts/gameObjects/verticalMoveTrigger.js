@@ -14,7 +14,7 @@ class VerticalMoveTrigger extends BaseGameObject {
     }
 
     draw = function () {
-       global.ctx.fillRect(this.x, this.y, this.width, this.height);
+    //    global.ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
     reactToCollision = function (collidingObject)   {

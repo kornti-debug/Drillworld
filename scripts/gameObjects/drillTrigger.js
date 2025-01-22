@@ -74,7 +74,7 @@ class DrillTrigger extends BaseGameObject {
         global.isDigging = true;
         collidingObject.hardness = collidingObject.hardness - global.playerObject.miningSpeed * global.deltaTime
         if(collidingObject.hardness <= collidingObject.originalHardness*0.66){
-            collidingObject.loadImages([`./images/ores/${collidingObject.type}1.png`])
+            collidingObject.loadImages([`./images/ores/${collidingObject.type}2.png`])
             collidingObject.hasBeenDrawn = false
         }
 
@@ -98,7 +98,7 @@ constructor(x, y, width, height) {
 
 
 draw = function () {
-    global.ctx.fillRect(this.x, this.y, this.width, this.height);
+    // global.ctx.fillRect(this.x, this.y, this.width, this.height);
 };
 
 update = function () {

@@ -7,27 +7,24 @@ class Shop extends BaseGameObject {
     blockGravityForces = false;
 
     reactToCollision = function (collidingObject) {
-    //     if (collidingObject.name == "Skeleton" && global.shopCollsion == false) {
+        if (collidingObject.name == "Player") {
+            global.shopCollision = true; // Skeleton is colliding with the shop
+            global.enterShopDiv.style.display = "block";
+        }
+    };
 
-    //         // manageRessources();
-    //         global.enterShopDiv.style.display = "block"
-    //         global.shopCollsion = true;
-    //     } else if (collidingObject.name != "Skeleton") {
-    //         // global.enterShopDiv.style.display = "none"
-    //         global.shopCollsion = false
-    //     }
+    checkShopCollisionStatus = function () {
+        if (!global.shopDiv.style.display || global.shopDiv.style.display === "none"){
+        if (!global.shopCollision) {
+            global.enterShopDiv.style.display = "none";
+        }
+        // Reset the flag for the next frame
+        if (!global.shopDiv.style.display || global.shopDiv.style.display === "none") {
+            global.shopCollision = false;
+        }
     }
-
-    // checkCollisionStatus = function () {
-    //     if (!global.currentlyCollidingWithShop) {
-    //         global.enterShopDiv.style.display = "none";
-    //     }
-    //     // Reset the flag for the next frame
-    //     global.currentlyCollidingWithShop = false;
-    // };
+};
     
-    // Call `checkCollisionStatus` at the end of each frame or update cycle
-    // setInterval(checkCollisionStatus, 16);
 
     manageRessources = function () {
         const li = document.createElement("li")

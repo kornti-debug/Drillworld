@@ -25,8 +25,10 @@ function gameLoop(totalRunningTime) {
             global.allGameObjects[i].draw();
         }
 
+
     }
 
+    global.shop.checkShopCollisionStatus()
     if (global.keys['d']) {
         if (global.playerObject.xVelocity == 0 && !global.isDigging){
             global.playerObject.switchCurrentSprites(12, 17);    
@@ -44,7 +46,7 @@ function gameLoop(totalRunningTime) {
 }
 
 function setupGame() {
-    global.playerObject = new Player(700, 250, 64, 64);
+    global.playerObject = new Player(500, 250, 64, 64);
     global.leftMoveTrigger = new MoveTrigger(100, 100, 20, 400);
     global.rightMoveTrigger = new MoveTrigger(800, 100, 20, 400);
     global.topMoveTrigger = new VerticalMoveTrigger(100, 100, 700, 20);
@@ -59,30 +61,25 @@ function setupGame() {
     global.leftMoveTrigger.name = "leftMoveTrigger";
     global.rightMoveTrigger.name = "rightMoveTrigger";
 
-    global.leftDrillTrigger = new DrillTrigger(0,0,10,10)
-    global.rightDrillTrigger = new DrillTrigger(0,0,10,10)
-    global.topDrillTrigger = new DrillTrigger(0,0,10,10)
-    global.bottomDrillTrigger = new DrillTrigger(0,0,10,10)
+    global.leftDrillTrigger = new DrillTrigger(0,0,1,1)
+    global.rightDrillTrigger = new DrillTrigger(0,0,1,1)
+    global.bottomDrillTrigger = new DrillTrigger(0,0,1,1)
     global.shop = new Shop(200,175, 200,150);
-    global.shop = new Rocket(600,50, 200,275);
+    global.rocket = new Rocket(600,50, 200,275);
 
     global.leftDrillTrigger.offset.left = 0;
     global.leftDrillTrigger.offset.top = global.playerObject.height / 2
     global.rightDrillTrigger.offset.left = global.playerObject.width;
     global.rightDrillTrigger.offset.top = global.playerObject.height / 2
-    global.topDrillTrigger.offset.left = global.playerObject.width / 2;
-    global.topDrillTrigger.offset.top = 0
     global.bottomDrillTrigger.offset.left = global.playerObject.width / 2;
     global.bottomDrillTrigger.offset.top = global.playerObject.height
 
     global.leftDrillTrigger.name = "leftDrillTrigger";
     global.rightDrillTrigger.name = "rightDrillTrigger";
-    global.topDrillTrigger.name = "topDrillTrigger";
     global.bottomDrillTrigger.name = "bottomDrillTrigger";
     global.leftDrillTrigger.checkCollisions = true;
     global.rightDrillTrigger.checkCollisions = true;
     global.bottomDrillTrigger.checkCollisions = true;
-    global.topDrillTrigger.checkCollisions = true;
 
     // Randomly generate a position for the arkenstone
     const arkenstonePosition = {
