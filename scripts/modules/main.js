@@ -18,6 +18,7 @@ function gameLoop(totalRunningTime) {
             global.allGameObjects[i].storePositionOfPreviousFrame();
             global.allGameObjects[i].update();
             global.allGameObjects[i].applyGravity();
+
             if (global.allGameObjects[i].checkCollisions) {
                 global.checkCollisionWithAnyOther(global.allGameObjects[i]);
             }
@@ -59,6 +60,9 @@ function renderPlayerStats() {
 
 function setupGame() {
     global.playerObject = new Player(500, 250, 64, 64);
+    global.shop = new Shop(200,175, 200,150);
+    global.rocket = new Rocket(600,50, 200,275);
+
     global.leftMoveTrigger = new MoveTrigger(100, 100, 20, 400);
     global.rightMoveTrigger = new MoveTrigger(800, 100, 20, 400);
     global.topMoveTrigger = new VerticalMoveTrigger(100, 100, 700, 20);
@@ -76,8 +80,6 @@ function setupGame() {
     global.leftDrillTrigger = new DrillTrigger(0,0,1,1)
     global.rightDrillTrigger = new DrillTrigger(0,0,1,1)
     global.bottomDrillTrigger = new DrillTrigger(0,0,1,1)
-    global.shop = new Shop(200,175, 200,150);
-    global.rocket = new Rocket(600,50, 200,275);
 
     global.leftDrillTrigger.offset.left = 0;
     global.leftDrillTrigger.offset.top = global.playerObject.height / 2
@@ -115,7 +117,7 @@ function setupGame() {
                 100,                  // health/hardness
                 "arkenstone",         // type
                 1000,                 // value (high value for rare ore)
-                "./images/arkenstone.png" // image path
+                ["./images/ores/arkenstone1.png","./images/ores/arkenstone2.png","./images/ores/arkenstone3.png"] // image path
             );
             continue; // Skip the normal block creation for this position
         }

@@ -7,8 +7,6 @@ class VerticalMoveTrigger extends BaseGameObject {
     name = "verticalMoveTrigger";
 
     update = function () {
-
-
             this.backGroundDiv.style.backgroundPositionY = global.verticalBackgroundShift + "px";
             global.canvas.style.marginTop = global.verticalBackgroundShift  + "px";
     }
@@ -31,8 +29,8 @@ class VerticalMoveTrigger extends BaseGameObject {
 
             // console.log(shiftBy,", ", global.backgroundShift)
 
-            if (global.verticalBackgroundShift < global.backgroundMaxShift) {
-                global.verticalBackgroundShift = global.backgroundMaxShift;
+            if (global.verticalBackgroundShift < global.verticalBackgroundMaxShift) {
+                global.verticalBackgroundShift = global.verticalBackgroundMaxShift;
                 collidingObject.y = collidingObject.previousY;
             }
             else if (global.verticalBackgroundShift > 0) {

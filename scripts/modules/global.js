@@ -27,7 +27,8 @@ global.playerObject = {};
 global.keys = {};
 global.backgroundShift = 0;
 global.verticalBackgroundShift = 0;
-global.backgroundMaxShift = -2000;
+global.horizontalBackgroundMaxShift = -610;
+global.verticalBackgroundMaxShift = -2000;
 global.gravityForce = 4;
 global.pixelToMeter = 100;
 global.leftMoveTrigger;
@@ -90,10 +91,10 @@ global.upgrades = {
 
 
 global.blockTypes = [
-    { type: "iron", hardness: 20, value: 50, image: "./images/ores/iron1.png" },
-    { type: "dirt", hardness: 10, value: 10, image: "./images/ores/dirt1.png" },
-    { type: "copper", hardness: 30, value: 100, image: "./images/ores/copper1.png" },
-    { type: "arkenstone", hardness: 200, value: 1000, image: "./images/ores/arkenstone1.png" },
+    { type: "iron", hardness: 20, value: 50, image: ["./images/ores/iron1.png","./images/ores/iron2.png","./images/ores/iron3.png"] },
+    { type: "dirt", hardness: 10, value: 10, image: ["./images/ores/dirt1.png","./images/ores/dirt2.png","./images/ores/dirt3.png"] },
+    { type: "copper", hardness: 30, value: 100, image: ["./images/ores/copper1.png","./images/ores/copper2.png","./images/ores/copper3.png"] },
+    { type: "arkenstone", hardness: 200, value: 1000, image: ["./images/ores/arkenstone1.png","./images/ores/arkenstone2.png","./images/ores/arkenstone3.png"] },
     { type: "empty" } // Represents an empty tile
 ];
 

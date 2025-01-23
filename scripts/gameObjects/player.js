@@ -19,16 +19,16 @@ class Player extends BaseGameObject {
         currentForce: 0,
         maxForce: 400,
         acceleration: 200,    // How quickly jetpack builds up
-        deceleration: 40,   // How quickly jetpack force fades
+        deceleration: 250,   // How quickly jetpack force fades
         isFlying: false
     };
 
     getBoxBounds = function () {
         let bounds = {
-            left: this.x +10,
+            left: this.x + 10,
             right: this.x + this.width-10,
-            top: this.y -10,
-            bottom: this.y + this.height
+            top: this.y,
+            bottom: this.y + this.height 
         }
         return bounds;
     }
@@ -37,6 +37,9 @@ class Player extends BaseGameObject {
         
         if (global.keys['w']) {
             this.jetpackData.isFlying = true;
+            if(this.jetpackData.isFlying){
+                global.playerObject.switchCurrentSprites(24, 26)
+            }
             // Gradually increase jetpack force
             this.jetpackData.currentForce += this.jetpackData.acceleration * deltaTime;
 
@@ -45,6 +48,7 @@ class Player extends BaseGameObject {
                 this.jetpackData.currentForce, 
                 this.jetpackData.maxForce
             );
+            global.playerObject.useGravityForces = false;
 
 
             
@@ -53,17 +57,19 @@ class Player extends BaseGameObject {
 
             this.yVelocity = -this.jetpackData.currentForce;
         }
-        //  else if (this.jetpackData.isFlying) {
-        //     // Gradually decrease jetpack force
-        //     this.jetpackData.currentForce -= this.jetpackData.deceleration * deltaTime;
+         else if (this.jetpackData.isFlying) {
+            global.playerObject.useGravityForces = true;
+
+            // Gradually decrease jetpack force
+            this.jetpackData.currentForce -= this.jetpackData.deceleration * deltaTime;
             
-        //     // Ensure force doesn't go negative
-        //     this.jetpackData.currentForce = Math.max(0, this.jetpackData.currentForce);
-            
-        //     if (this.jetpackData.currentForce <= 0) {
-        //         this.jetpackData.isFlying = false;
-        //     }
-        // }
+            // Ensure force doesn't go negative
+            this.jetpackData.currentForce = Math.max(0, this.jetpackData.currentForce);
+            // console.log(this.jetpackData.currentForce)
+            if (this.jetpackData.currentForce <= 0) {
+                this.jetpackData.isFlying = false;
+            }
+        }
 
         // Cap the vertical velocity
         this.physicsData.fallVelocity = Math.max(
@@ -75,15 +81,15 @@ class Player extends BaseGameObject {
         );
     }
 
-    update = function() {
+    update = function(coll) {
 
         this.updateJetpack(global.deltaTime)
         this.x += this.xVelocity * global.deltaTime;
         this.y += this.yVelocity * global.deltaTime;
         // global.playerObject.switchCurrentSprites(6, 10);
 
-        if (this.xVelocity == 0) {
-            global.playerObject.switchCurrentSprites(this.animationData.firstSpriteIndex, this.animationData.firstSpriteIndex);
+        if (this.xVelocity == 0 && this.yVelocity == 0 && !this.jetpackData.isFlying && !global.isDigging && !global.keys["a"] && !global.keys["s"] && !global.keys["w"] && !global.keys["d"]) {
+            global.playerObject.switchCurrentSprites(10, 12);
             // console.log(this.animationData.firstSpriteIndex)
         }
     }
@@ -93,16 +99,12 @@ class Player extends BaseGameObject {
         global.ctx.fillRect(this.x, this.y, this.width, this.height);
     }*/
 
-    reactToCollision = function(otherObject) {
-        // if (otherObject.name == "BlockObject" && global.keys["s"]) {
-        //     otherObject.active = false;
-        // }
-        // if (otherObject.name == "BlockObject" && global.keys["a"]) {
-        //     otherObject.active = false;
-        // }
-        // if (otherObject.name == "BlockObject" && global.keys["d"]) {
-        //     otherObject.active = false;
-        // }
+    reactToCollision = function (collidingObject)   {
+        if (collidingObject.name == "BlockObject") {
+            console.log("block")
+            this.x = this.previousX;
+            this.y = this.previousY;
+        }
     }
 
     constructor(x, y, width, height) {

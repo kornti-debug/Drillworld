@@ -126,7 +126,7 @@ body {
     background-color: rgb(62, 14, 14);
     display: block;
     position: absolute;
-    left: 250px;
+    left: 350px;
     top: 50px;
     z-index: 2;
 
@@ -183,7 +183,7 @@ body {
 #playerStatsDiv {
     width: 400px;
     height: 20px;
-    background-color: rgb(14, 89, 114);
+    /* background-color: rgb(14, 89, 114); */
     display: block;
     position: absolute;
     left: 20px;
@@ -201,6 +201,7 @@ body {
 
 #instructionsScreen{
     display: none;
+  place-items: center;
 }
 
 #winScreen {
@@ -229,7 +230,9 @@ body {
 }
 
 p {
-    margin: 0
+    margin: 0;
+    max-width: 30ch;
+    font-size: 1.5em;
 }
 
 

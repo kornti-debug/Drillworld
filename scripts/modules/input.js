@@ -8,19 +8,20 @@ function move(event) {
 
 
     if (global.keys['d']) {
-        if (global.playerObject.xVelocity == 0 && !global.isDigging) {
+        if (global.playerObject.xVelocity == 0 && !global.isDigging && !global.playerObject.jetpackData.isFlying) {
             global.playerObject.switchCurrentSprites(12, 17);
         }
         global.playerObject.xVelocity = global.playerObject.speed;
         global.playerObject.yVelocity = 0;
     } else if (global.keys['a']) {
-        if (global.playerObject.xVelocity == 0 && !global.isDigging) {
+        if (global.playerObject.xVelocity == 0 && !global.isDigging && !global.playerObject.jetpackData.isFlying ) {
             global.playerObject.switchCurrentSprites(18, 23);
         }
-        global.playerObject.xVelocity = -global.playerObject.speed;;
+        global.playerObject.xVelocity = -global.playerObject.speed;
         global.playerObject.yVelocity = 0;
     } else { global.playerObject.xVelocity = 0; }
 
+   
     if (global.keys['e']) {
             populateResources();
             showUpgrades();
@@ -37,12 +38,12 @@ function move(event) {
 }
 
 function showItems() {
-    global.itemDisplayDiv.innerHTML = "Items";
+    global.itemDisplayDiv.innerHTML = `<p>Items</p>`;
 }
 
 function showBuildings() {
 
-    global.buildDisplayDiv.innerHTML = "buildings";
+    global.buildDisplayDiv.innerHTML = `<p>Buildings</p>`;
 
     const rocketButton = document.createElement("button");
     rocketButton.className = "button-9"
@@ -62,7 +63,7 @@ function showBuildings() {
 
 function populateResources() {
     // Clear existing content
-    global.resourceDisplayDiv.innerHTML = "ressources";
+    global.resourceDisplayDiv.innerHTML = `<p>Ressources</p>`;
 
 
     // Append each resource to the div
@@ -81,7 +82,7 @@ function populateResources() {
 
 function showUpgrades() {
     // Clear existing content
-    global.upgradeDisplayDiv.innerHTML = "upgrades";
+    global.upgradeDisplayDiv.innerHTML = `<p>Upgrades</p>`;
 
     // Drill Upgrades
     const currentDrillLevel = global.playerObject.currentDrillLevel;
@@ -135,11 +136,10 @@ function purchaseUpgrade(category) {
 
         // Advance to the next level
         global.playerObject[`current${capitalize(category)}Level`]++;
-        console.log(global.playerObject[`current${capitalize(category)}Level`])
 
         // Re-render the upgrade div to show the next upgrade
         showUpgrades();
-        renderPlayerStats();
+        // renderPlayerStats();
     } else {
         alert("Not enough money to purchase this upgrade!");
     }
@@ -182,6 +182,12 @@ document.addEventListener("keydown", move);
 //if you just want to move as long as the player presses a key:
 document.addEventListener("keyup", stop);
 
+document.addEventListener("visibilitychange", () => {
+    if (!document.hidden){
+        global.prevTotalRunningTime = performance.now();
+    }
+})
+
 global.shopCloseButton.addEventListener("click", closeShop);
 
 // global.shopSellButton.addEventListener("click", sellOres)
@@ -203,7 +209,7 @@ function startGame() {
 
 function showInstructions(){
     global.startScreenDiv.style.display = "none"
-    global.instructionsScreenDiv.style.display = "block"
+    global.instructionsScreenDiv.style.display = "grid"
 }
 function backToStartScreenButton(){
 
@@ -221,11 +227,9 @@ function sellOres() {
     let totalEarnings = 0;
     for (const [key, value] of Object.entries(global.ressources)) {
         const pricePerUnit = 20;
-        console.log(key, ", ", value)
         totalEarnings += value * pricePerUnit
         global.ressources[key] = 0;
     }
-    console.log(totalEarnings)
 
     global.money += totalEarnings;
     populateResources()

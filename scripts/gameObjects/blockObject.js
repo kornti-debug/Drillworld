@@ -9,8 +9,17 @@ class BlockObject extends BaseGameObject {
     originalHardness;
     type = "iron";
     value = 50;
-    staticImage = true; // New property to identify static blocks
+    // staticImage = true; // New property to identify static blocks
     hasBeenDrawn = false; // Tracks if the block has already been drawn
+
+constructor (x, y, width, height, hardness, type, value, imagePaths) {
+        super(x, y, width, height);
+        this.loadImages(imagePaths);
+        this.hardness = hardness
+        this.originalHardness = hardness
+        this.type = type
+        this.value = value
+    }
 
     reactToCollision = function (collidingObject)   {
         if (collidingObject.name == "Player") {
@@ -19,31 +28,26 @@ class BlockObject extends BaseGameObject {
         }
     }
 
-
-    draw() {
-        console.log("test2")
-
-        if (this.staticImage && this.hasBeenDrawn) {
-            // Skip drawing if the block is static and already drawn
-            return;
-        }
+    draw = function () {
 
         let sprite = this.getNextSprite();
         global.ctx.drawImage(sprite, this.x, this.y, this.width, this.height);
+    };
+    // draw = function() {
+    //     console.log("test2")
 
-        if (this.staticImage) {
-            this.hasBeenDrawn = true; // Mark as drawn after the first frame
-        }
-    }
+        // if (this.hasBeenDrawn) {
+        //     // Skip drawing if the block is static and already drawn
+        //     return;
+        // }
 
-    constructor (x, y, width, height, hardness, type, value, imagePath) {
-        super(x, y, width, height);
-        this.loadImages([imagePath]);
-        this.hardness = hardness
-        this.originalHardness = hardness
-        this.type = type
-        this.value = value
-    }
+        // let sprite = this.getNextSprite();
+        // global.ctx.drawImage(sprite, this.x, this.y, this.width, this.height);
+
+        //     this.hasBeenDrawn = true; // Mark as drawn after the first frame
+    // }
+
+    
 }
 
 export {BlockObject};

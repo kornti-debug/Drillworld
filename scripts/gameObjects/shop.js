@@ -7,8 +7,9 @@ class Shop extends BaseGameObject {
     blockGravityForces = false;
 
     reactToCollision = function (collidingObject) {
+        console.log("test")
         if (collidingObject.name == "Player") {
-            global.shopCollision = true; // Skeleton is colliding with the shop
+            global.shopCollision = true;
             global.enterShopDiv.style.display = "block";
         }
     };

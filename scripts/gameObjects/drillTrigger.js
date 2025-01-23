@@ -15,21 +15,25 @@ class DrillTrigger extends BaseGameObject {
     reactToCollision = function (collidingObject) {
         if (collidingObject.name == "BlockObject") {
             if (this.name == "leftDrillTrigger" && global.keys['a']) {
-                if (this.checkIfBlockCanBeMined(collidingObject)) {
+                global.playerObject.x = global.playerObject.previousX;
+                if (this.checkIfBlockCanBeMined(collidingObject) && global.playerObject.physicsData.isGrounded && !global.playerObject.jetpackData.isFlying) {
                     this.isDigging(collidingObject);
                 }
             }
-            if (this.name == "rightDrillTrigger" && global.keys['d']) {
-                if (this.checkIfBlockCanBeMined(collidingObject)) {
+            else if (this.name == "rightDrillTrigger" && global.keys['d']) {
+                global.playerObject.x = global.playerObject.previousX;
+                if (this.checkIfBlockCanBeMined(collidingObject) && global.playerObject.physicsData.isGrounded && !global.playerObject.jetpackData.isFlying) {
                     this.isDigging(collidingObject);
                 }
             }
 
-            if (this.name == "bottomDrillTrigger" && global.keys['s']) {
-                if (this.checkIfBlockCanBeMined(collidingObject)) {
+            else if (this.name == "bottomDrillTrigger" && global.keys['s']) {
+                if (this.checkIfBlockCanBeMined(collidingObject) && global.playerObject.physicsData.isGrounded && !global.playerObject.jetpackData.isFlying) {
                     this.isDigging(collidingObject);
                 }
             }
+            global.isDigging = false
+ 
             // if(this.name == "leftDrillTrigger" && global.keys['a']){
             //     collidingObject.active = false;
             // }
@@ -59,23 +63,26 @@ class DrillTrigger extends BaseGameObject {
 
     isDigging = function (collidingObject) {
 
-
+        if(!global.isDigging){
         if(this.name == "bottomDrillTrigger"){
+            console.log("test1")
                 global.playerObject.switchCurrentSprites(0, 2);
         }
         if(this.name == "leftDrillTrigger"){
-
+                // console.log("test")
                 global.playerObject.switchCurrentSprites(6, 8);
         }
         if(this.name == "rightDrillTrigger"){
 
                 global.playerObject.switchCurrentSprites(3, 5);
-        }
+        }}
         global.isDigging = true;
         collidingObject.hardness = collidingObject.hardness - global.playerObject.miningSpeed * global.deltaTime
         if(collidingObject.hardness <= collidingObject.originalHardness*0.66){
-            collidingObject.loadImages([`./images/ores/${collidingObject.type}2.png`])
-            collidingObject.hasBeenDrawn = false
+            collidingObject.switchCurrentSprites(1,1)
+        }
+        if(collidingObject.hardness <= collidingObject.originalHardness*0.33){
+            collidingObject.switchCurrentSprites(2,2)
         }
 
         if (collidingObject.hardness <= 0) {
@@ -98,7 +105,7 @@ constructor(x, y, width, height) {
 
 
 draw = function () {
-    // global.ctx.fillRect(this.x, this.y, this.width, this.height);
+     global.ctx.fillRect(this.x, this.y, this.width, this.height);
 };
 
 update = function () {

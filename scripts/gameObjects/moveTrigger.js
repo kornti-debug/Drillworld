@@ -31,8 +31,8 @@ class MoveTrigger extends BaseGameObject {
             global.backgroundShift += shiftBy * -1;
             // dconsole.log(shiftBy,", ", global.backgroundShift)
 
-            if (global.backgroundShift < global.backgroundMaxShift) {
-                global.backgroundShift = global.backgroundMaxShift;
+            if (global.backgroundShift < global.horizontalBackgroundMaxShift) {
+                global.backgroundShift = global.horizontalBackgroundMaxShift;
                 collidingObject.x = collidingObject.previousX;
             }
             else if (global.backgroundShift > 0) {
