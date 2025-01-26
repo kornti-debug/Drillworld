@@ -89,9 +89,7 @@ class BaseGameObject {
                         if (this.physicsData.fallVelocity > 0) {
                             this.physicsData.isGrounded = true;
                             this.y = otherObject.getBoxBounds().top - this.height - (this.getBoxBounds().bottom - (this.y + this.height)) - (global.deltaTime * 0.1);
-                            /*console.log("objectToTop")
-                            console.log(this.physicsData.fallVelocity)
-                            console.log(global.gravityForce * global.deltaTime * global.pixelToMeter)*/
+
 
                         }
                         else if (this.physicsData.fallVelocity < 0) {
@@ -114,7 +112,6 @@ class BaseGameObject {
     };
 
     draw = function () {
-        // console.log("test1")
 
         let sprite = this.getNextSprite();
         global.ctx.drawImage(sprite, this.x, this.y, this.width, this.height);
@@ -201,7 +198,6 @@ class BaseGameObject {
     }
 
     switchCurrentSprites = function (firstSpriteIndex, lastSpriteIndex) {
-        console.log("switch", firstSpriteIndex, lastSpriteIndex)
         this.animationData.currentSpriteIndex = firstSpriteIndex;
         this.animationData.firstSpriteIndex = firstSpriteIndex;
         this.animationData.lastSpriteIndex = lastSpriteIndex;

@@ -65,7 +65,6 @@ class Player extends BaseGameObject {
             
             // Ensure force doesn't go negative
             this.jetpackData.currentForce = Math.max(0, this.jetpackData.currentForce);
-            // console.log(this.jetpackData.currentForce)
             if (this.jetpackData.currentForce <= 0) {
                 this.jetpackData.isFlying = false;
             }
@@ -90,7 +89,6 @@ class Player extends BaseGameObject {
 
         if (this.xVelocity == 0 && this.yVelocity == 0 && !this.jetpackData.isFlying && !global.isDigging && !global.keys["a"] && !global.keys["s"] && !global.keys["w"] && !global.keys["d"]) {
             global.playerObject.switchCurrentSprites(10, 12);
-            // console.log(this.animationData.firstSpriteIndex)
         }
     }
 
@@ -101,7 +99,6 @@ class Player extends BaseGameObject {
 
     reactToCollision = function (collidingObject)   {
         if (collidingObject.name == "BlockObject") {
-            console.log("block")
             this.x = this.previousX;
             this.y = this.previousY;
         }
