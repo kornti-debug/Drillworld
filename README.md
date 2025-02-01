@@ -7,7 +7,7 @@
 ---
 
 ## 🌐 **Play the Game**
-[Click here to play the game!](https://your-github-username.github.io/repository-name)
+[Click here to play the game!](https://kornti-debug.github.io/Drillworld/)
 
 ---
 
@@ -15,16 +15,24 @@
 
 ### Main Gameplay:
 <div style="text-align: center;">
-  <img src="gameplay.png" alt="Gameplay Screenshot" width="600">
-  <p>*Figure 1: Example of gameplay in action.*</p>
+  <img src="./images/gameplay_drillworld.png" alt="Gameplay Screenshot" width="600">
+  <p>This is the gameplay of Drillworld! A 2D-Mining game where you need to collect ores, sell them, and build a rocket to leave the planet!</p>
 </div>
 
 ---
 
 ### Menu and UI:
 <div style="text-align: center;">
-  <img src="menu.png" alt="Menu UI Screenshot" width="600">
-  <p>*Figure 2: Menu and user interface.*</p>
+  <img src="/images/menu_UI_drillworld.png" alt="Menu UI Screenshot" width="600">
+  <p>Menu and Interface</p>
+</div>
+
+---
+
+### Shop Interface:
+<div style="text-align: center;">
+  <img src="/images/shop_interface_drillworld.png" alt="Shop Interface Screenshot" width="600">
+  <p>The Interface of the shop</p>
 </div>
 
 ---
@@ -34,16 +42,27 @@ Below are the sprites used to create characters and objects in the game:
 
 ### Player Character:
 <div style="text-align: center;">
-  <img src="playersheet.png" alt="Player Spritesheet" width="500">
-  <p>*Figure 3: Player character animations.*</p>
+  <img src="./images/DrillenDigman.png" alt="Player Spritesheet" width="500">
+  <p>Player character animations. This is the spritesheet of the protagonist Drillen Digman!</p>
 </div>
 
 ---
 
-### Enemies and NPCs:
+### Ore Sprites
 <div style="text-align: center;">
-  <img src="enemysheet.png" alt="Enemy Spritesheet" width="500">
-  <p>*Figure 4: Enemy animations.*</p>
+  <img src="./images/ores/dirt1.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/dirt2.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/dirt3.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/iron1.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/iron2.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/iron3.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/copper1.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/copper2.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/copper3.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/arkenstone1.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/arkenstone2.png" alt="Ore Spritesheet" width="64">
+  <img src="./images/ores/arkenstone3.png" alt="Ore Spritesheet" width="64">
+  <p>Ore Sprites</p>
 </div>
 
 ---
@@ -51,12 +70,14 @@ Below are the sprites used to create characters and objects in the game:
 ## ✍️ **Reflection**
 
 ### What went well:
-- **Creative Design:** The theme and style came together seamlessly, and the sprites were fun to design.
-- **Core Mechanics:** The gravity-based gameplay worked better than expected and provided a unique challenge.
+- **Creative Design:**
+The design was inspired by the game Motherload. A 2D mining game. The style was inspired by Muten Roshi and Terminator. The sprites were fun to design and a lot of creativity went into designing them
+
+- **Core Mechanics:** The gravity and movement mechanic were challenging to make. In the end it worked out, but there are still some minor bugs or lets say features 😉
 
 ### Challenges:
 - **Time Constraints:** Implementing all the features we envisioned wasn’t possible due to the limited timeframe.
-- **Bug Fixes:** Handling collisions and edge cases for gravity mechanics was tricky.
+- **Bug Fixes:** Handling collisions and edge cases for gravity mechanics was tricky. Also the jetpack movement where challenging to make, because you I also needed to consider how the gravity is applied when using the jetpack.
 
 ### Lessons Learned:
 - **Prototyping Matters:** Testing early prototypes helped refine the core mechanics quickly.
