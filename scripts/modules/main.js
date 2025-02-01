@@ -5,7 +5,7 @@ import { BlockObject } from "../gameObjects/blockObject.js";
 import { DrillTrigger } from "../gameObjects/drillTrigger.js";
 import { VerticalMoveTrigger } from "../gameObjects/verticalMoveTrigger.js";
 import { Shop } from "../gameObjects/shop.js";
-import { Rocket } from "../gameObjects/Rocket.js"
+import { Rocket } from "../gameObjects/rocket.js"
 
 function gameLoop(totalRunningTime) { 
     global.deltaTime = totalRunningTime - global.prevTotalRunningTime; // Time in milliseconds between frames
