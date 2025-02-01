@@ -1,8 +1,6 @@
-# 🎮 **Game Title** 
+# 🎮 **Drillworld** 
 
-> **Short Pitch**: A brief and catchy description of your game. Highlight the concept, genre, and key features.
-> 
-> *Example:* "Explore an alien planet in this retro-inspired platformer where gravity is your greatest ally—or enemy!"
+> Explore a vast planet where you need to dig into the ground, find ore, upgrade your equipment and build a rocket to escape the planet.
 
 ---
 
@@ -76,9 +74,10 @@ The design was inspired by the game Motherload. A 2D mining game. The style was 
 - **Core Mechanics:** The gravity and movement mechanic were challenging to make. In the end it worked out, but there are still some minor bugs or lets say features 😉
 
 ### Challenges:
-- **Time Constraints:** Implementing all the features we envisioned wasn’t possible due to the limited timeframe.
+- **Time Constraints:** I couldn't implement all features i wanted to have in this game, because I run out of time. However I could implement the core mechanics which was very important.
+- **Movement:** The movement of the character was tricky, because i needed to have a working gravity function and also jetpack function so the character was able to fly. 
 - **Bug Fixes:** Handling collisions and edge cases for gravity mechanics was tricky. Also the jetpack movement where challenging to make, because you I also needed to consider how the gravity is applied when using the jetpack.
 
 ### Lessons Learned:
-- **Prototyping Matters:** Testing early prototypes helped refine the core mechanics quickly.
-- **Keep it Simple:** Focusing on one unique mechanic instead of multiple features made the game more polished.
+- **Prototyping Matters:** Testing early prototypes helped me to fix bugs quickly and gave me an overview which mechanics and game design decisions i could focus on.
+- **Keep it Simple:** I had many more features in my mind, but i am glad that i focused on the important core of the game, so the game can still be extended over time.

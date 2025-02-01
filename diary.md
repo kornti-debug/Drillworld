@@ -6,6 +6,7 @@ MoveTrigger changes. Implemented new vertical move trigger. changed level backgr
 movement adaptation. jetpack function, jetpack force
 
 ### 16/1/25
+checkIfBlockCanMined implemented (checks if a block can be mined, considering the drillLevel)
 block health changes
 vertical move trigger
 
@@ -14,11 +15,16 @@ shop implementation. ressources, money.
 tile map randomnly created
 
 ### 20/1/25
+jetpack function updated and implemented
 character sprites drawn and implemented
+rocket class implemented
 
 ### 21/1/25
 trying to solve movement issue, bugfixing
 
 ### 22/1/25
 background and underground drawings, sprite drawings, sprite implementation, bug fixing
+
+### 23/1/25
+collision handling, bug fixing, sprite bug fixing, movement bug fixing
 
