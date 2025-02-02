@@ -23,11 +23,11 @@ class VerticalMoveTrigger extends BaseGameObject {
             if (this.name == "topMoveTrigger"){
                 shiftBy = collidingObject.yVelocity * global.deltaTime;
             } else {
+                // bottom move trigger shifts by falling velocity not player velocity
                 shiftBy = collidingObject.physicsData.prevFallingVelocity;
             }
             global.verticalBackgroundShift += shiftBy * -1;
 
-            // console.log(shiftBy,", ", global.backgroundShift)
 
             if (global.verticalBackgroundShift < global.verticalBackgroundMaxShift) {
                 global.verticalBackgroundShift = global.verticalBackgroundMaxShift;
@@ -47,7 +47,6 @@ class VerticalMoveTrigger extends BaseGameObject {
 
     constructor(x, y, width, height) {
         super(x, y, width, height);
-        //this.loadImages(["./images/apple.png"]);
         this.backGroundDiv = document.querySelector("#background");
 
     }

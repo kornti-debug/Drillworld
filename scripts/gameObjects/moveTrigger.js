@@ -7,6 +7,7 @@ class MoveTrigger extends BaseGameObject {
     update = function () {
 
 
+        // setting x and y values of each move trigger, considering the other move triggers
         this.backGroundDiv.style.backgroundPositionX = global.backgroundShift + "px";
         global.canvas.style.marginLeft =  global.backgroundShift  + "px";
         global.topMoveTrigger.x = global.rightMoveTrigger.x - global.topMoveTrigger.width
@@ -29,7 +30,6 @@ class MoveTrigger extends BaseGameObject {
             let shiftBy = collidingObject.xVelocity * global.deltaTime;
 
             global.backgroundShift += shiftBy * -1;
-            // dconsole.log(shiftBy,", ", global.backgroundShift)
 
             if (global.backgroundShift < global.horizontalBackgroundMaxShift) {
                 global.backgroundShift = global.horizontalBackgroundMaxShift;
@@ -38,12 +38,7 @@ class MoveTrigger extends BaseGameObject {
             else if (global.backgroundShift > 0) {
                 global.backgroundShift = 0;
                 collidingObject.x = collidingObject.previousX;
-                // this.x = collidingObject.x;
-                // if(this.name =="leftMoveTrigger"){
-                //     global.topMoveTrigger.x =this.x
-                //     global.bottomMoveTrigger.x=this.x
-                    
-                // }
+
             }
             else {
                 global.leftMoveTrigger.x += shiftBy;
@@ -57,7 +52,6 @@ class MoveTrigger extends BaseGameObject {
 
     constructor(x, y, width, height) {
         super(x, y, width, height);
-        //this.loadImages(["./images/apple.png"]);
         this.backGroundDiv = document.querySelector("#background");
 
     }

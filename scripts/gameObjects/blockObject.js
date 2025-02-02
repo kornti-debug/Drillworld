@@ -1,7 +1,7 @@
 import { BaseGameObject } from "./baseGameObject.js";
 import { global } from "../modules/global.js";
 
-
+//block object class which represents the mining blocks
 class BlockObject extends BaseGameObject {
     name = "BlockObject";
     blockGravityForces = true;
@@ -9,8 +9,6 @@ class BlockObject extends BaseGameObject {
     originalHardness;
     type = "iron";
     value = 50;
-    // staticImage = true; // New property to identify static blocks
-    hasBeenDrawn = false; // Tracks if the block has already been drawn
 
 constructor (x, y, width, height, hardness, type, value, imagePaths) {
         super(x, y, width, height);
@@ -33,19 +31,6 @@ constructor (x, y, width, height, hardness, type, value, imagePaths) {
         let sprite = this.getNextSprite();
         global.ctx.drawImage(sprite, this.x, this.y, this.width, this.height);
     };
-    // draw = function() {
-    //     console.log("test2")
-
-        // if (this.hasBeenDrawn) {
-        //     // Skip drawing if the block is static and already drawn
-        //     return;
-        // }
-
-        // let sprite = this.getNextSprite();
-        // global.ctx.drawImage(sprite, this.x, this.y, this.width, this.height);
-
-        //     this.hasBeenDrawn = true; // Mark as drawn after the first frame
-    // }
 
     
 }

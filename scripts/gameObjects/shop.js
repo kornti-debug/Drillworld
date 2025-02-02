@@ -27,12 +27,6 @@ class Shop extends BaseGameObject {
 };
     
 
-    manageRessources = function () {
-        const li = document.createElement("li")
-        global.shopUl.appendChild(li)
-    }
-
-
     constructor(x, y, width, height) {
         super(x, y, width, height);
         this.loadImages(["./images/Shop.png"]);

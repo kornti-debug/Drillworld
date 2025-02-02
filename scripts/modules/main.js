@@ -28,8 +28,11 @@ function gameLoop(totalRunningTime) {
 
 
     }
-
+//check shop collsionStatus is called all the time to check if the player collides with the shop to show the "enter shop" div
     global.shop.checkShopCollisionStatus()
+
+
+    //reacting to player keypresses in the gameloop felt smoother 
     if (global.keys['d']) {
         if (global.playerObject.xVelocity == 0 && !global.isDigging){
             global.playerObject.switchCurrentSprites(12, 17);    
@@ -43,6 +46,7 @@ function gameLoop(totalRunningTime) {
         global.playerObject.yVelocity = 0;
  } else {global.playerObject.xVelocity = 0;}
     
+ //render player stats on the top left screen, make sure to show the player the stats all the time
  renderPlayerStats()
  
  requestAnimationFrame(gameLoop); // This keeps the gameLoop running indefinitely
@@ -59,10 +63,12 @@ function renderPlayerStats() {
 
 
 function setupGame() {
+    /*setting up the whole game with every object of the game*/
     global.playerObject = new Player(500, 250, 64, 64);
     global.shop = new Shop(200,175, 200,150);
     global.rocket = new Rocket(600,50, 200,275);
 
+    //setting up move and drill triggers
     global.leftMoveTrigger = new MoveTrigger(100, 100, 20, 400);
     global.rightMoveTrigger = new MoveTrigger(800, 100, 20, 400);
     global.topMoveTrigger = new VerticalMoveTrigger(100, 100, 700, 20);
@@ -97,8 +103,8 @@ function setupGame() {
 
     // Randomly generate a position for the arkenstone
     const arkenstonePosition = {
-        i: Math.floor(Math.random() * 10 + 5), // Random column index (0 to 29)
-        j: Math.floor(Math.random() * 10 +15) // Random row index (0 to 49)
+        i: Math.floor(Math.random() * 10 + 5), // Random column index (5 to 14)
+        j: Math.floor(Math.random() * 10 +15) // Random row index (15 to 24)
     };
 
 
@@ -149,7 +155,7 @@ function getBlockTypeForRow(row) {
     let probabilities;
 
     if (row < 5) {
-        // Higher levels: Mostly iron, dirt, and empty blocks
+        // Higher levels: Mostly  dirt blocks
         probabilities = {
             iron: 0.1,
             dirt: 0.8,
@@ -171,7 +177,16 @@ function getBlockTypeForRow(row) {
             empty: 0.1
         };
     }
+/*
+If Math.random() gives 0.35, we process:
 
+Iron:
+Cumulative = 0.1
+random (0.35) > 0.1 → Continue
+Dirt:
+Cumulative = 0.1 + 0.7 = 0.8
+random (0.35) < 0.8 → Choose "dirt"! ✅
+If Math.random() was 0.95, the sequence would pick empty.*/
     
     // Choose a block type based on probabilities
     const random = Math.random();

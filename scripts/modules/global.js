@@ -1,5 +1,6 @@
 const global = {};
 
+/** grab all html elements and define global values */
 global.canvas = document.querySelector("#canvas");
 global.ctx = canvas.getContext("2d");
 global.ctx.imageSmoothingEnabled = false;
@@ -39,6 +40,7 @@ global.shop;
 global.shopCollision = false;
 global.money =0;
 
+//inventory
 global.ressources = {
     iron: 0,
     copper: 0
@@ -46,6 +48,7 @@ global.ressources = {
 
 global.arkenstone = false;
 
+//shop upgrades
 global.upgrades = {
     drills: [
         {
@@ -89,7 +92,7 @@ global.upgrades = {
     ],
 };
 
-
+//block types
 global.blockTypes = [
     { type: "iron", hardness: 20, value: 50, image: ["./images/ores/iron1.png","./images/ores/iron2.png","./images/ores/iron3.png"] },
     { type: "dirt", hardness: 10, value: 10, image: ["./images/ores/dirt1.png","./images/ores/dirt2.png","./images/ores/dirt3.png"] },

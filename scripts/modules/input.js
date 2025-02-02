@@ -4,6 +4,7 @@ let isFlying = false;
 
 function move(event) {
 
+    //set keys to true if pressed in key object
     global.keys[event.key] = true;
 
 
@@ -22,12 +23,12 @@ function move(event) {
     } else { global.playerObject.xVelocity = 0; }
 
    
+    //shop logic
     if (global.keys['e']) {
             populateResources();
             showUpgrades();
             showItems();
             showBuildings();
-            // renderPlayerStats();
 
             const shopVisible = global.shopDiv.style.display === "block";
             global.shopDiv.style.display = shopVisible ? "none" : "block";
@@ -41,6 +42,7 @@ function showItems() {
     global.itemDisplayDiv.innerHTML = `<p>Items</p>`;
 }
 
+//show buildings to buy in the shop
 function showBuildings() {
 
     global.buildDisplayDiv.innerHTML = `<p>Buildings</p>`;
@@ -52,15 +54,7 @@ function showBuildings() {
     global.buildDisplayDiv.appendChild(rocketButton);
 }
 
-// function renderPlayerStats() {
-//     playerStatsDiv.innerHTML = `
-//         <p>Money: $${global.money}; 
-//         Mining Speed: ${global.playerObject.miningSpeed}x; 
-//         Health: ${global.playerObject.health}
-//         Energy: ${global.playerObject.energy}</p>
-//     `;
-// }
-
+//show inventory/resources to sell
 function populateResources() {
     // Clear existing content
     global.resourceDisplayDiv.innerHTML = `<p>Ressources</p>`;
@@ -77,7 +71,6 @@ function populateResources() {
     sellButton.textContent = `sell ore`;
     sellButton.addEventListener("click", () => sellOres());
     global.resourceDisplayDiv.appendChild(sellButton);
-    // renderPlayerStats();
 }
 
 function showUpgrades() {
@@ -139,12 +132,11 @@ function purchaseUpgrade(category) {
 
         // Re-render the upgrade div to show the next upgrade
         showUpgrades();
-        // renderPlayerStats();
     } else {
         alert("Not enough money to purchase this upgrade!");
     }
 }
-
+//changing drills to Drill -> to match the variable currentDrillLevel. same goes for suits
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1, -1);
 
@@ -171,10 +163,6 @@ function stop(event) {
         global.playerObject.yVelocity = -0;
         global.gravityForce = 4;
     }
-    if (!global.keys['s']) {
-        // global.playerObject.yVelocity = 0;
-    }
-
 }
 
 document.addEventListener("keydown", move);
@@ -190,7 +178,6 @@ document.addEventListener("visibilitychange", () => {
 
 global.shopCloseButton.addEventListener("click", closeShop);
 
-// global.shopSellButton.addEventListener("click", sellOres)
 
 global.startGameButton.addEventListener("click", startGame)
 
@@ -198,10 +185,6 @@ global.instructionsButton.addEventListener("click", showInstructions)
 
 global.backToStartScreenButton.addEventListener("click", backToStartScreenButton)
 
-
-// document.addEventListener("mousemove", (event) => {
-//     console.log(`x= ${event.clientX}, Y=${event.clientY}`)
-// })
 
 function startGame() {
     global.startScreenDiv.style.display = "none"
@@ -222,6 +205,7 @@ function closeShop() {
     global.shopDiv.style.display = "none";
 }
 
+//sell ores function, checks all resources and sell them with 20 per unit
 function sellOres() {
 
     let totalEarnings = 0;

@@ -12,7 +12,7 @@ vertical move trigger
 
 ### 17/1/25
 shop implementation. ressources, money.
-tile map randomnly created
+tile map randomly created
 
 ### 20/1/25
 jetpack function updated and implemented

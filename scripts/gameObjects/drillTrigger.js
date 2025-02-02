@@ -11,7 +11,7 @@ class DrillTrigger extends BaseGameObject {
         "top": 0
     }
 
-
+/* drill trigger reacts to mining block. if key is pressed, player is on the ground and check of if block can be mined, the block will be mined*/
     reactToCollision = function (collidingObject) {
         if (collidingObject.name == "BlockObject") {
             if (this.name == "leftDrillTrigger" && global.keys['a']) {
@@ -33,16 +33,10 @@ class DrillTrigger extends BaseGameObject {
                 }
             }
             global.isDigging = false
- 
-            // if(this.name == "leftDrillTrigger" && global.keys['a']){
-            //     collidingObject.active = false;
-            // }
-            //     collidingObject.x = collidingObject.previousX;
-            //     collidingObject.y = collidingObject.previousY;
-            // }
         }
     }
 
+    //check if block can be mined depending on the block type current drill level
     checkIfBlockCanBeMined = function (collidingObject) {
         if (collidingObject.type == "dirt") {
             return true;
@@ -61,6 +55,7 @@ class DrillTrigger extends BaseGameObject {
 
     }
 
+    //switching to respective drill sprites -> set digging to true and decrease hardness/health of the block until its gone.
     isDigging = function (collidingObject) {
 
         if(!global.isDigging){
@@ -78,6 +73,8 @@ class DrillTrigger extends BaseGameObject {
         }}
         global.isDigging = true;
         collidingObject.hardness = collidingObject.hardness - global.playerObject.miningSpeed * global.deltaTime
+        
+        //switch to respective block sprites if the block is lower a certain health
         if(collidingObject.hardness <= collidingObject.originalHardness*0.66){
             collidingObject.switchCurrentSprites(1,1)
         }
@@ -88,8 +85,8 @@ class DrillTrigger extends BaseGameObject {
         if (collidingObject.hardness <= 0) {
             collidingObject.active = false;
             global.isDigging = false
-            // global.playerObject.switchCurrentSprites(10, 10);
 
+            //add resource to inventory
             if (collidingObject.type != "dirt" && collidingObject.type != "arkenstone")
                 global.ressources[collidingObject.type]++
             if (collidingObject.type == "arkenstone") { }
@@ -105,7 +102,7 @@ constructor(x, y, width, height) {
 
 
 draw = function () {
-     global.ctx.fillRect(this.x, this.y, this.width, this.height);
+    //  global.ctx.fillRect(this.x, this.y, this.width, this.height);
 };
 
 update = function () {

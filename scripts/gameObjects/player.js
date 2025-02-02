@@ -15,6 +15,8 @@ class Player extends BaseGameObject {
     speed = 200
     friction = 0.5
 
+/*jetpack data: is used to control the jetpack movement*/
+
     jetpackData = {
         currentForce: 0,
         maxForce: 400,
@@ -33,6 +35,10 @@ class Player extends BaseGameObject {
         return bounds;
     }
 
+
+    /*is called all the time in the update -> gameploop
+    updates the upward velocity of the player when pressing 'w' */
+
     updateJetpack = function(deltaTime) {
         
         if (global.keys['w']) {
@@ -49,14 +55,13 @@ class Player extends BaseGameObject {
                 this.jetpackData.maxForce
             );
             global.playerObject.useGravityForces = false;
-
-
-            
+         
             // Apply upward force
             this.physicsData.fallVelocity = 0;
-
             this.yVelocity = -this.jetpackData.currentForce;
         }
+
+        /* decelerate when player is still flying but not pressing 'w' */
          else if (this.jetpackData.isFlying) {
             global.playerObject.useGravityForces = true;
 
@@ -85,7 +90,6 @@ class Player extends BaseGameObject {
         this.updateJetpack(global.deltaTime)
         this.x += this.xVelocity * global.deltaTime;
         this.y += this.yVelocity * global.deltaTime;
-        // global.playerObject.switchCurrentSprites(6, 10);
 
         if (this.xVelocity == 0 && this.yVelocity == 0 && !this.jetpackData.isFlying && !global.isDigging && !global.keys["a"] && !global.keys["s"] && !global.keys["w"] && !global.keys["d"]) {
             global.playerObject.switchCurrentSprites(10, 12);
