@@ -69,9 +69,11 @@ Below are the sprites used to create characters and objects in the game:
 
 ### What went well:
 - **Creative Design:**
-The design was inspired by the game Motherload. A 2D mining game. The style was inspired by Muten Roshi and Terminator. The sprites were fun to design and a lot of creativity went into designing them
+The design was inspired by the game Motherload. A 2D mining game. The character style was inspired by Muten Roshi and Terminator. The sprites were fun to design and a lot of creativity went into designing them.
 
 - **Core Mechanics:** The gravity and movement mechanic were challenging to make. In the end it worked out, but there are still some minor bugs or lets say features 😉
+
+- **Shop Mechanic:** The shop mechanic was fun to make, because it added more depth and strategy to the game. This mechanic can be expanded a lot more and add more depth to the game.
 
 ### Challenges:
 - **Time Constraints:** I couldn't implement all features i wanted to have in this game, because I run out of time. However I could implement the core mechanics which was very important.
